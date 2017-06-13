@@ -54,6 +54,8 @@ class ofxDatGuiThemeVMM : public ofxDatGuiTheme{
             color.pad2d.line = hex(0x6E6E6E);
             color.pad2d.ball = hex(0x6E6E6E);
             color.graph.fills = hex(0x6E6E6E);
+            font.file = "ofxbraitsch/fonts/Verdana.ttf";
+            
             init();
         }
 };

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C55B963C-8215-43C5-9E5D-C9E445E9309D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>VMM_UI_design</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9233F0F4A2BE011BD468E5177A5AD6623263B23D</key>
+		<string>https://github.com/leozimmerman/ofxDatGui.git</string>
+		<key>A8071287BF9B32465AEC898AEACC0EB1DE5AEB71</key>
+		<string>https://github.com/lg3bass/VMM_UI_design.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>VMM_UI_design.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9233F0F4A2BE011BD468E5177A5AD6623263B23D</key>
+		<string>../../../addons/ofxDatGui</string>
+		<key>A8071287BF9B32465AEC898AEACC0EB1DE5AEB71</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/lg3bass/VMM_UI_design.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>A8071287BF9B32465AEC898AEACC0EB1DE5AEB71</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9233F0F4A2BE011BD468E5177A5AD6623263B23D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxDatGui</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A8071287BF9B32465AEC898AEACC0EB1DE5AEB71</string>
+			<key>IDESourceControlWCCName</key>
+			<string>VMM_UI_design</string>
+		</dict>
+	</array>
+</dict>
+</plist>

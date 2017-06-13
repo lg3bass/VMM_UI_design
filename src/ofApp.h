@@ -57,6 +57,14 @@ class ofApp : public ofBaseApp{
         ofxDatGuiMatrix* tracks;
         ofxDatGuiMatrix* pages;
         ofxDatGuiMatrix* clips;
+    
+        ofxDatGuiButton* save;
+        ofxDatGuiButton* saveAll;
+        ofxDatGuiButton* load;
+        ofxDatGuiButton* loadAll;
+    
+        ofxDatGuiTextInput* measures;
+    
 
 		
 };

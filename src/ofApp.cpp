@@ -18,18 +18,11 @@ void ofApp::setup(){
     verdana30.load("verdana.ttf", 30, true, true);
     verdana30.setLineHeight(34.0f);
     verdana30.setLetterSpacing(1.035);
-
-    
-    // setup a resolution for a grid //
-    numCols = 1;
-    numRows = 10;
-    ofSetWindowPosition(0, 0);
-    font.load("ofxbraitsch/fonts/Verdana.ttf", 12);
     
     // instantiate a matrix with a button for each box in our grid //
-    tracks = new ofxDatGuiMatrix("TRACK", numCols*numRows, true);
-    pages = new ofxDatGuiMatrix("PAGE", numCols*numRows, true);
-    clips = new ofxDatGuiMatrix("CLIP", numCols*numRows, true);
+    tracks = new ofxDatGuiMatrix("TRACK", 10, true);
+    pages = new ofxDatGuiMatrix("PAGE", 10, true);
+    clips = new ofxDatGuiMatrix("CLIP", 10, true);
     
     //set the theme
     tracks->setTheme(new ofxDatGuiThemeVMM());
@@ -46,9 +39,61 @@ void ofApp::setup(){
     pages->setOpacity(.75);
     clips->setOpacity(.75);
     
-    tracks->setWidth(260.0, 60.0);
-    pages->setWidth(260.0, 60.0);
-    clips->setWidth(260.0, 60.0);
+    float matrixWidth = 250.0;
+    
+    tracks->setWidth(matrixWidth, 60.0);
+    pages->setWidth(matrixWidth, 60.0);
+    clips->setWidth(matrixWidth, 60.0);
+    
+    tracks->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    pages->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    clips->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    //tracks->setLabelMargin(10.0);
+    
+    
+    save = new ofxDatGuiButton("SAVE");
+    save->setTheme(new ofxDatGuiThemeVMM);
+    save->setWidth(50);
+    save->setHeight(tracks->getHeight());
+    save->setPosition(tracks->getWidth(), 0);
+    save->setLabelMargin(0);
+    save->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    saveAll = new ofxDatGuiButton("SAVE ALL");
+    saveAll->setTheme(new ofxDatGuiThemeVMM);
+    saveAll->setWidth(50);
+    saveAll->setHeight(tracks->getHeight());
+    saveAll->setPosition(tracks->getWidth()+save->getWidth(), 0);
+    saveAll->setLabelMargin(0);
+    saveAll->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    
+    load = new ofxDatGuiButton("SAVE");
+    load->setTheme(new ofxDatGuiThemeVMM);
+    load->setWidth(50);
+    load->setHeight(tracks->getHeight());
+    load->setPosition(tracks->getWidth()+save->getWidth()+saveAll->getWidth(), 0);
+    load->setLabelMargin(0);
+    load->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    loadAll = new ofxDatGuiButton("SAVE ALL");
+    loadAll->setTheme(new ofxDatGuiThemeVMM);
+    loadAll->setWidth(50);
+    loadAll->setHeight(tracks->getHeight());
+    loadAll->setPosition(tracks->getWidth()+save->getWidth()+saveAll->getWidth()+loadAll->getWidth(), 0);
+    loadAll->setLabelMargin(0);
+    loadAll->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    measures = new ofxDatGuiTextInput("MM", "8");
+    measures->setTheme(new ofxDatGuiThemeVMM);
+    measures->setWidth(50,20.0);
+    measures->setHeight(tracks->getHeight());
+    measures->setPosition(tracks->getWidth(), tracks->getHeight());
+    measures->setLabelMargin(0);
+    measures->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    
 
 }
 
@@ -69,6 +114,13 @@ void ofApp::update(){
     pages->update();
     clips->setPosition(0, tracks->getHeight()+pages->getHeight());
     clips->update();
+    
+    save->update();
+    saveAll->update();
+    load->update();
+    loadAll->update();
+    
+    measures->update();
 }
 
 //--------------------------------------------------------------
@@ -87,12 +139,19 @@ void ofApp::draw(){
     
     ofPushStyle();
         ofSetColor(myAppData.txt_color);
-        verdana30.drawString(msg, ofGetWidth()/2-bounds.width/2, ofGetHeight()/2-bounds.height/2);
+        //verdana30.drawString(msg, ofGetWidth()/2-bounds.width/2, ofGetHeight()/2-bounds.height/2);
     ofPopStyle();
     
     tracks->draw();
     pages->draw();
     clips->draw();
+    
+    save->draw();
+    saveAll->draw();
+    load->draw();
+    loadAll->draw();
+
+    measures->draw();
 }
 
 //--------------------------------------------------------------
