@@ -69,7 +69,7 @@ void ofApp::setup(){
     saveAll->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
     
-    load = new ofxDatGuiButton("SAVE");
+    load = new ofxDatGuiButton("LOAD");
     load->setTheme(new ofxDatGuiThemeVMM);
     load->setWidth(50);
     load->setHeight(tracks->getHeight());
@@ -77,7 +77,7 @@ void ofApp::setup(){
     load->setLabelMargin(0);
     load->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
-    loadAll = new ofxDatGuiButton("SAVE ALL");
+    loadAll = new ofxDatGuiButton("LOAD ALL");
     loadAll->setTheme(new ofxDatGuiThemeVMM);
     loadAll->setWidth(50);
     loadAll->setHeight(tracks->getHeight());
@@ -90,11 +90,76 @@ void ofApp::setup(){
     measures->setWidth(50,20.0);
     measures->setHeight(tracks->getHeight());
     measures->setPosition(tracks->getWidth(), tracks->getHeight());
-    measures->setLabelMargin(0);
-    measures->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    measures->setLabelMargin(5);
+    measures->setLabelAlignment(ofxDatGuiAlignment::LEFT);
+    
+    bpm = new ofxDatGuiTextInput("BPM", "120");
+    bpm->setTheme(new ofxDatGuiThemeVMM);
+    bpm->setWidth(50,20.0);
+    bpm->setHeight(tracks->getHeight());
+    bpm->setPosition(tracks->getWidth()+measures->getWidth(), tracks->getHeight());
+    bpm->setLabelMargin(0);
+    bpm->setLabelAlignment(ofxDatGuiAlignment::LEFT);
+    
+    BBF = new ofxDatGuiLabel("B|B|F");
+    BBF->setTheme(new ofxDatGuiThemeVMM);
+    BBF->setWidth(50);
+    BBF->setHeight(tracks->getHeight());
+    BBF->setPosition(500, 0);
+    BBF->setLabelMargin(0);
+    BBF->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
     
-
+    bar = new ofxDatGuiTextInput("","8");
+    bar->setTheme(new ofxDatGuiThemeVMM);
+    bar->setWidth(50, 0.0);
+    bar->setHeight(tracks->getHeight());
+    bar->setPosition(550, 0);
+    bar->setLabelMargin(0);
+    bar->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    beat = new ofxDatGuiTextInput("","3");
+    beat->setTheme(new ofxDatGuiThemeVMM);
+    beat->setWidth(50, 0.0);
+    beat->setHeight(tracks->getHeight());
+    beat->setPosition(600, 0);
+    beat->setLabelMargin(0);
+    beat->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    
+    frame = new ofxDatGuiTextInput("","234");
+    frame->setTheme(new ofxDatGuiThemeVMM);
+    frame->setWidth(50, 0.0);
+    frame->setHeight(tracks->getHeight());
+    frame->setPosition(650, 0);
+    frame->setLabelMargin(0);
+    frame->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    
+    selTrack = new ofxDatGuiTextInput("TRACK","G Rotate X");
+    selTrack->setTheme(new ofxDatGuiThemeVMM);
+    selTrack->setWidth(200, 50.0);
+    selTrack->setHeight(tracks->getHeight());
+    selTrack->setPosition(500, BBF->getHeight());
+    selTrack->setLabelMargin(0);
+    selTrack->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    selKeys = new ofxDatGuiTextInput("KEYS","0,15,30,45,60,75");
+    selKeys->setTheme(new ofxDatGuiThemeVMM);
+    selKeys->setWidth(200, 50.0);
+    selKeys->setHeight(tracks->getHeight());
+    selKeys->setPosition(500, BBF->getHeight()+selTrack->getHeight());
+    selKeys->setLabelMargin(0);
+    selKeys->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    selValues = new ofxDatGuiTextInput("VALUES","0.0,100.0,100.0,45.0,0.0,0.0");
+    selValues->setTheme(new ofxDatGuiThemeVMM);
+    selValues->setWidth(200, 50.0);
+    selValues->setHeight(tracks->getHeight());
+    selValues->setPosition(500, BBF->getHeight()+selTrack->getHeight()+selKeys->getHeight());
+    selValues->setLabelMargin(0);
+    selValues->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
 }
 
 //--------------------------------------------------------------
@@ -121,6 +186,18 @@ void ofApp::update(){
     loadAll->update();
     
     measures->update();
+    bpm->update();
+    
+    
+    BBF->update();
+    bar->update();
+    beat->update();
+    frame->update();
+    
+    selTrack->update();
+    selKeys->update();
+    selValues->update();
+    
 }
 
 //--------------------------------------------------------------
@@ -152,6 +229,18 @@ void ofApp::draw(){
     loadAll->draw();
 
     measures->draw();
+    bpm->draw();
+    
+    
+    BBF->draw();
+    bar->draw();
+    beat->draw();
+    frame->draw();
+    
+    selTrack->draw();
+    selKeys->draw();
+    selValues->draw();
+
 }
 
 //--------------------------------------------------------------

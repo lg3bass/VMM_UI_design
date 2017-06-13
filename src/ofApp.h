@@ -64,7 +64,19 @@ class ofApp : public ofBaseApp{
         ofxDatGuiButton* loadAll;
     
         ofxDatGuiTextInput* measures;
+        ofxDatGuiTextInput* bpm;
     
-
+        ofxDatGuiTextInput* barBeatFrame;
+        ofxDatGuiTextInput* loop;
+    
+        ofxDatGuiLabel* BBF;
+        ofxDatGuiTextInput* bar;
+        ofxDatGuiTextInput* beat;
+        ofxDatGuiTextInput* frame;
+    
+        ofxDatGuiTextInput* selTrack;
+        ofxDatGuiTextInput* selKeys;
+        ofxDatGuiTextInput* selValues;
+    
 		
 };
