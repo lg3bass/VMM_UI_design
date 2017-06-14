@@ -49,9 +49,31 @@ void ofApp::setup(){
     pages->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     clips->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
-    //tracks->setLabelMargin(10.0);
+
+    saveOptions.push_back("SAVE");
+    saveOptions.push_back("SAVE ALL");
+    saveOptions.push_back("SAVE AS");
+    loadOptions.push_back("LOAD");
+    loadOptions.push_back("LOAD ALL");
     
     
+    
+    //save/load dropdowns
+    saveDropdown = new ofxDatGuiDropdown("SAVE",saveOptions);
+    saveDropdown->setTheme(new ofxDatGuiThemeVMM);
+    saveDropdown->setWidth(100.0,60.0);
+    saveDropdown->setHeight(tracks->getHeight());
+    saveDropdown->setPosition(tracks->getWidth(), 0);
+    
+    
+    loadDropdown = new ofxDatGuiDropdown("LOAD",loadOptions);
+    loadDropdown->setTheme(new ofxDatGuiThemeVMM);
+    loadDropdown->setWidth(100.0);
+    loadDropdown->setHeight(tracks->getHeight());
+    loadDropdown->setPosition(tracks->getWidth()+saveDropdown->getWidth(), 0);
+    
+    
+    //discrete save/load buttons
     save = new ofxDatGuiButton("SAVE");
     save->setTheme(new ofxDatGuiThemeVMM);
     save->setWidth(50);
@@ -67,7 +89,6 @@ void ofApp::setup(){
     saveAll->setPosition(tracks->getWidth()+save->getWidth(), 0);
     saveAll->setLabelMargin(0);
     saveAll->setLabelAlignment(ofxDatGuiAlignment::CENTER);
-    
     
     load = new ofxDatGuiButton("LOAD");
     load->setTheme(new ofxDatGuiThemeVMM);
@@ -85,27 +106,55 @@ void ofApp::setup(){
     loadAll->setLabelMargin(0);
     loadAll->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
-    measures = new ofxDatGuiTextInput("MM", "8");
+    
+    
+    //
+    
+    ofVec2f timingPanelPos = ofVec2f(tracks->getWidth()+saveDropdown->getWidth()+loadDropdown->getWidth(),0);
+    
+    measures = new ofxDatGuiTextInput("MEASURES", "8");
     measures->setTheme(new ofxDatGuiThemeVMM);
-    measures->setWidth(50,20.0);
+    measures->setWidth(75,50.0);
     measures->setHeight(tracks->getHeight());
-    measures->setPosition(tracks->getWidth(), tracks->getHeight());
-    measures->setLabelMargin(5);
-    measures->setLabelAlignment(ofxDatGuiAlignment::LEFT);
+    measures->setPosition(timingPanelPos.x, timingPanelPos.y);
+    measures->setLabelMargin(0);
+    measures->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
     bpm = new ofxDatGuiTextInput("BPM", "120");
     bpm->setTheme(new ofxDatGuiThemeVMM);
-    bpm->setWidth(50,20.0);
+    bpm->setWidth(75,30.0);
     bpm->setHeight(tracks->getHeight());
-    bpm->setPosition(tracks->getWidth()+measures->getWidth(), tracks->getHeight());
+    bpm->setPosition(timingPanelPos.x+measures->getWidth(), timingPanelPos.y);
     bpm->setLabelMargin(0);
-    bpm->setLabelAlignment(ofxDatGuiAlignment::LEFT);
+    bpm->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    fps = new ofxDatGuiTextInput("FPS", "30");
+    fps->setTheme(new ofxDatGuiThemeVMM);
+    fps->setWidth(75,30.0);
+    fps->setHeight(tracks->getHeight());
+    fps->setPosition(timingPanelPos.x+measures->getWidth()+bpm->getWidth(), timingPanelPos.y);
+    fps->setLabelMargin(0);
+    fps->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    loop = new ofxDatGuiTextInput("LOOP", "30");
+    loop->setTheme(new ofxDatGuiThemeVMM);
+    loop->setWidth(75,30.0);
+    loop->setHeight(tracks->getHeight());
+    loop->setPosition(timingPanelPos.x+measures->getWidth()+bpm->getWidth()+fps->getWidth(), timingPanelPos.y);
+    loop->setLabelMargin(0);
+    loop->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    
+    
+    //
+    
+    ofVec2f hud = ofVec2f(800,0);
+    
     
     BBF = new ofxDatGuiLabel("B|B|F");
     BBF->setTheme(new ofxDatGuiThemeVMM);
     BBF->setWidth(50);
     BBF->setHeight(tracks->getHeight());
-    BBF->setPosition(500, 0);
+    BBF->setPosition(hud.x, hud.y);
     BBF->setLabelMargin(0);
     BBF->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
@@ -114,7 +163,7 @@ void ofApp::setup(){
     bar->setTheme(new ofxDatGuiThemeVMM);
     bar->setWidth(50, 0.0);
     bar->setHeight(tracks->getHeight());
-    bar->setPosition(550, 0);
+    bar->setPosition(hud.x+BBF->getWidth(), hud.y);
     bar->setLabelMargin(0);
     bar->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
@@ -122,7 +171,7 @@ void ofApp::setup(){
     beat->setTheme(new ofxDatGuiThemeVMM);
     beat->setWidth(50, 0.0);
     beat->setHeight(tracks->getHeight());
-    beat->setPosition(600, 0);
+    beat->setPosition(hud.x+BBF->getWidth()+bar->getWidth(), hud.y);
     beat->setLabelMargin(0);
     beat->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
@@ -131,7 +180,7 @@ void ofApp::setup(){
     frame->setTheme(new ofxDatGuiThemeVMM);
     frame->setWidth(50, 0.0);
     frame->setHeight(tracks->getHeight());
-    frame->setPosition(650, 0);
+    frame->setPosition(hud.x+BBF->getWidth()+bar->getWidth()+beat->getWidth(), hud.y);
     frame->setLabelMargin(0);
     frame->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
@@ -140,7 +189,7 @@ void ofApp::setup(){
     selTrack->setTheme(new ofxDatGuiThemeVMM);
     selTrack->setWidth(200, 50.0);
     selTrack->setHeight(tracks->getHeight());
-    selTrack->setPosition(500, BBF->getHeight());
+    selTrack->setPosition(hud.x, hud.y+BBF->getHeight());
     selTrack->setLabelMargin(0);
     selTrack->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
@@ -148,7 +197,7 @@ void ofApp::setup(){
     selKeys->setTheme(new ofxDatGuiThemeVMM);
     selKeys->setWidth(200, 50.0);
     selKeys->setHeight(tracks->getHeight());
-    selKeys->setPosition(500, BBF->getHeight()+selTrack->getHeight());
+    selKeys->setPosition(hud.x, hud.y+BBF->getHeight()+selTrack->getHeight());
     selKeys->setLabelMargin(0);
     selKeys->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
@@ -156,7 +205,7 @@ void ofApp::setup(){
     selValues->setTheme(new ofxDatGuiThemeVMM);
     selValues->setWidth(200, 50.0);
     selValues->setHeight(tracks->getHeight());
-    selValues->setPosition(500, BBF->getHeight()+selTrack->getHeight()+selKeys->getHeight());
+    selValues->setPosition(hud.x, hud.y+BBF->getHeight()+selTrack->getHeight()+selKeys->getHeight());
     selValues->setLabelMargin(0);
     selValues->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
@@ -180,14 +229,21 @@ void ofApp::update(){
     clips->setPosition(0, tracks->getHeight()+pages->getHeight());
     clips->update();
     
-    save->update();
-    saveAll->update();
-    load->update();
-    loadAll->update();
+
+    
+//    save->update();
+//    saveAll->update();
+//    load->update();
+//    loadAll->update();
     
     measures->update();
     bpm->update();
+    fps->update();
+    loop->update();
+
     
+    saveDropdown->update();
+    loadDropdown->update();
     
     BBF->update();
     bar->update();
@@ -223,14 +279,18 @@ void ofApp::draw(){
     pages->draw();
     clips->draw();
     
-    save->draw();
-    saveAll->draw();
-    load->draw();
-    loadAll->draw();
+//    save->draw();
+//    saveAll->draw();
+//    load->draw();
+//    loadAll->draw();
 
     measures->draw();
     bpm->draw();
+    fps->draw();
+    loop->draw();
     
+    saveDropdown->draw();
+    loadDropdown->draw();
     
     BBF->draw();
     bar->draw();

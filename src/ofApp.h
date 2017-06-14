@@ -57,16 +57,24 @@ class ofApp : public ofBaseApp{
         ofxDatGuiMatrix* tracks;
         ofxDatGuiMatrix* pages;
         ofxDatGuiMatrix* clips;
+ 
+        //save/load dropdowns
+        vector<string> saveOptions;
+        vector<string> loadOptions;
+        ofxDatGuiDropdown* saveDropdown;
+        ofxDatGuiDropdown* loadDropdown;
     
+    
+        //discrete save/load buttons
         ofxDatGuiButton* save;
         ofxDatGuiButton* saveAll;
         ofxDatGuiButton* load;
         ofxDatGuiButton* loadAll;
     
+        //set global timing.
         ofxDatGuiTextInput* measures;
         ofxDatGuiTextInput* bpm;
-    
-        ofxDatGuiTextInput* barBeatFrame;
+        ofxDatGuiTextInput* fps;
         ofxDatGuiTextInput* loop;
     
         ofxDatGuiLabel* BBF;
