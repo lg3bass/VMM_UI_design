@@ -82,6 +82,9 @@ class ofApp : public ofBaseApp{
         ofxDatGuiTextInput* beat;
         ofxDatGuiTextInput* frame;
     
+        ofxDatGuiSlider* linkSlider;
+    
+        //not used anymore
         ofxDatGuiTextInput* selTrack;
         ofxDatGuiTextInput* selKeys;
         ofxDatGuiTextInput* selValues;

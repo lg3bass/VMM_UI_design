@@ -147,12 +147,12 @@ void ofApp::setup(){
     
     //
     
-    ofVec2f hud = ofVec2f(800,0);
+    ofVec2f hud = ofVec2f(timingPanelPos.x+measures->getWidth()+bpm->getWidth()+fps->getWidth(),0);
     
     
-    BBF = new ofxDatGuiLabel("B|B|F");
+    BBF = new ofxDatGuiLabel("Bar|Beat|Frame");
     BBF->setTheme(new ofxDatGuiThemeVMM);
-    BBF->setWidth(50);
+    BBF->setWidth(100);
     BBF->setHeight(tracks->getHeight());
     BBF->setPosition(hud.x, hud.y);
     BBF->setLabelMargin(0);
@@ -176,6 +176,8 @@ void ofApp::setup(){
     beat->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
     
+    
+    
     frame = new ofxDatGuiTextInput("","234");
     frame->setTheme(new ofxDatGuiThemeVMM);
     frame->setWidth(50, 0.0);
@@ -184,6 +186,16 @@ void ofApp::setup(){
     frame->setLabelMargin(0);
     frame->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     
+    ofVec2f linkHud = ofVec2f(hud.x+BBF->getWidth()+bar->getWidth()+beat->getWidth()+frame->getWidth(), 0);
+    
+    linkSlider = new ofxDatGuiSlider("LINK",0.0,1.0,0.65);
+    linkSlider->setWidth(ofGetWidth()-linkHud.x-100, 10);
+    linkSlider->setTheme(new ofxDatGuiThemeVMM);
+    linkSlider->setPosition(linkHud.x,linkHud.y);
+    
+    
+    
+    //not used anymore.
     
     selTrack = new ofxDatGuiTextInput("TRACK","G Rotate X");
     selTrack->setTheme(new ofxDatGuiThemeVMM);
@@ -250,9 +262,11 @@ void ofApp::update(){
     beat->update();
     frame->update();
     
-    selTrack->update();
-    selKeys->update();
-    selValues->update();
+    linkSlider->update();
+    
+//    selTrack->update();
+//    selKeys->update();
+//    selValues->update();
     
 }
 
@@ -297,9 +311,11 @@ void ofApp::draw(){
     beat->draw();
     frame->draw();
     
-    selTrack->draw();
-    selKeys->draw();
-    selValues->draw();
+    linkSlider->draw();
+    
+//    selTrack->draw();
+//    selKeys->draw();
+//    selValues->draw();
 
 }
 
