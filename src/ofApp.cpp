@@ -147,7 +147,7 @@ void ofApp::setup(){
     
     //
     
-    ofVec2f hud = ofVec2f(timingPanelPos.x+measures->getWidth()+bpm->getWidth()+fps->getWidth(),0);
+    ofVec2f hud = ofVec2f(timingPanelPos.x+measures->getWidth()+bpm->getWidth()+fps->getWidth()+loop->getWidth(),0);
     
     
     BBF = new ofxDatGuiLabel("Bar|Beat|Frame");
@@ -189,8 +189,9 @@ void ofApp::setup(){
     ofVec2f linkHud = ofVec2f(hud.x+BBF->getWidth()+bar->getWidth()+beat->getWidth()+frame->getWidth(), 0);
     
     linkSlider = new ofxDatGuiSlider("LINK",0.0,1.0,0.65);
-    linkSlider->setWidth(ofGetWidth()-linkHud.x-100, 10);
     linkSlider->setTheme(new ofxDatGuiThemeVMM);
+    linkSlider->setWidth(ofGetWidth()-linkHud.x, 0);
+    linkSlider->setHeight(tracks->getHeight());
     linkSlider->setPosition(linkHud.x,linkHud.y);
     
     
