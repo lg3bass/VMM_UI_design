@@ -50,7 +50,7 @@ class ofApp : public ofBaseApp{
     
         ofTrueTypeFont	verdana30;
     
-    
+        //S1
         int numCols;
         int numRows;
         ofTrueTypeFont font;
@@ -58,24 +58,43 @@ class ofApp : public ofBaseApp{
         ofxDatGuiMatrix* pages;
         ofxDatGuiMatrix* clips;
  
-        //save/load dropdowns
-        vector<string> saveOptions;
-        vector<string> loadOptions;
-        ofxDatGuiDropdown* saveDropdown;
-        ofxDatGuiDropdown* loadDropdown;
+        //S2
+            //ROW1
+            ofxDatGuiLabel* breadcrumb;
+        
+            //ROW2
+            ofxDatGuiLabel* selKey;
+            ofxDatGuiButton* selPrev;
+            ofxDatGuiButton* selNext;
+            ofxDatGuiTextInput* keyVal;
+            ofxDatGuiLabel* clamp;
+        
+            //ROW3
+            //save/load dropdowns
+            vector<string> saveOptions;
+            vector<string> loadOptions;
+            ofxDatGuiDropdown* saveDropdown;
+            ofxDatGuiDropdown* loadDropdown;
     
-    
-        //discrete save/load buttons
-        ofxDatGuiButton* save;
-        ofxDatGuiButton* saveAll;
-        ofxDatGuiButton* load;
-        ofxDatGuiButton* loadAll;
-    
-        //set global timing.
-        ofxDatGuiTextInput* measures;
-        ofxDatGuiTextInput* bpm;
-        ofxDatGuiTextInput* fps;
-        ofxDatGuiTextInput* loop;
+        //S3
+            //ROW 1
+            //set global timing.
+            ofxDatGuiTextInput* measures;
+            ofxDatGuiTextInput* bpm;
+            ofxDatGuiTextInput* fps;
+            ofxDatGuiTextInput* loop;
+        
+            //ROW 2
+            ofxDatGuiTextInput* clampL;
+            ofxDatGuiTextInput* clampH;
+            ofxDatGuiTextInput* setIn;
+            ofxDatGuiTextInput* setOut;
+        
+            //ROW 3
+            ofxDatGuiButton* addTr;
+            ofxDatGuiButton* remTr;
+            vector<string> trackOptions;
+            ofxDatGuiDropdown* trackDropdown;
     
         ofxDatGuiLabel* BBF;
         ofxDatGuiTextInput* bar;
