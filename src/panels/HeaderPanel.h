@@ -12,8 +12,12 @@
 
 #include "ofMain.h"
 #include "Panel.h"
+#include "headerUI.h"
 
 #endif /* HeaderPanel_h */
+
+
+
 
 class HeaderPanel : public Panel{
     
@@ -28,6 +32,8 @@ public:
     
     void mousePressed(int x, int y, int button);
     void mouseReleased(int x, int y, int button);
+    
+    headerUI mainUI;
 
 private:
     

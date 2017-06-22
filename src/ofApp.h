@@ -4,15 +4,12 @@
 
 //panels
 #include "HeaderPanel.h"
-#include "BodyPanel.h"
+#include "timelinePanel.h"
 #include "FooterPanel.h"
 
-#include "ofxDatGui.h"
-#include "ofxDatGuiThemesVMM.h"
-
-#define HEADER_PANEL_HEIGHT 0.2
-#define BODY_PANEL_HEIGHT 0.6
-#define FOOTER_PANEL_HEIGHT 0.2
+#define HEADER_PANEL_HEIGHT 0.16
+#define BODY_PANEL_HEIGHT 0.74
+#define FOOTER_PANEL_HEIGHT 0.1
 
 
 struct appData {
@@ -20,12 +17,33 @@ struct appData {
     ofColor txt_color;
 };
 
+struct controllerData {
+    int selected_track;
+    int selected_clip;
+    int selected_page;
+    
+    int measures;
+    int bpm;
+    int fps;
+    int loop;
+    int mBeats;
+    int mUnits;
+    int bar;
+    int beat;
+    int frame;
+    
+    bool snap;
+    bool drive;
+    bool osc;
+    
+};
 
 class ofApp : public ofBaseApp{
 
 	public:
     
         appData myAppData;
+        controllerData myCtrlData;
     
 		void setup();
 		void update();
@@ -43,70 +61,21 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
+        void setVar(string text);
+    
+        void setControllerData(int data);
+        void resetControllerData();
+    
+    private:
+    
+
+    
         //panels
         HeaderPanel headerPanel;
-        BodyPanel bodyPanel;
+        timelinePanel timePanel;
         FooterPanel footerPanel;
     
         ofTrueTypeFont	verdana30;
-    
-        //S1
-        int numCols;
-        int numRows;
-        ofTrueTypeFont font;
-        ofxDatGuiMatrix* tracks;
-        ofxDatGuiMatrix* pages;
-        ofxDatGuiMatrix* clips;
- 
-        //S2
-            //ROW1
-            ofxDatGuiLabel* breadcrumb;
-        
-            //ROW2
-            ofxDatGuiLabel* selKey;
-            ofxDatGuiButton* selPrev;
-            ofxDatGuiButton* selNext;
-            ofxDatGuiTextInput* keyVal;
-            ofxDatGuiLabel* clamp;
-        
-            //ROW3
-            //save/load dropdowns
-            vector<string> saveOptions;
-            vector<string> loadOptions;
-            ofxDatGuiDropdown* saveDropdown;
-            ofxDatGuiDropdown* loadDropdown;
-    
-        //S3
-            //ROW 1
-            //set global timing.
-            ofxDatGuiTextInput* measures;
-            ofxDatGuiTextInput* bpm;
-            ofxDatGuiTextInput* fps;
-            ofxDatGuiTextInput* loop;
-        
-            //ROW 2
-            ofxDatGuiTextInput* clampL;
-            ofxDatGuiTextInput* clampH;
-            ofxDatGuiTextInput* setIn;
-            ofxDatGuiTextInput* setOut;
-        
-            //ROW 3
-            ofxDatGuiButton* addTr;
-            ofxDatGuiButton* remTr;
-            vector<string> trackOptions;
-            ofxDatGuiDropdown* trackDropdown;
-    
-        ofxDatGuiLabel* BBF;
-        ofxDatGuiTextInput* bar;
-        ofxDatGuiTextInput* beat;
-        ofxDatGuiTextInput* frame;
-    
-        ofxDatGuiSlider* linkSlider;
-    
-        //not used anymore
-        ofxDatGuiTextInput* selTrack;
-        ofxDatGuiTextInput* selKeys;
-        ofxDatGuiTextInput* selValues;
     
 		
 };

@@ -1,5 +1,5 @@
 //
-//  BodyPanel.h
+//  timelinePanel.h
 //  PATTERN_shared_ptr
 //
 //  Created by Robert White III on 6/8/17.
@@ -7,15 +7,35 @@
 //
 #pragma once
 
-#ifndef BodyPanel_h
-#define BodyPanel_h
+#ifndef timelinePanel_h
+#define timelinePanel_h
 
 #include "ofMain.h"
 #include "Panel.h"
 
-#endif /* BodyPanel_h */
+#endif /* timelinePanel_h */
 
-class BodyPanel : public Panel{
+
+
+struct kf {
+    int frm;
+    int val;
+};
+
+struct timlineData{
+    vector<kf> keys;
+    int selected_key;
+    float clampL;
+    float clampH;
+    
+    bool snap;
+    bool drive;
+    bool osc;
+    
+};
+
+
+class timelinePanel : public Panel{
 
 public:
     

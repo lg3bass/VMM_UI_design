@@ -1,18 +1,18 @@
 //
-//  BodyPanel.cpp
+//  timelinePanel.cpp
 //  PATTERN_shared_ptr
 //
 //  Created by Robert White III on 6/8/17.
 //
 //
 
-#include "BodyPanel.h"
+#include "timelinePanel.h"
 #include "ofApp.h"
 
 ofApp* bMainApp;
 
 //-------------------------------------------------
-void BodyPanel::setup(int x, int y, int width, int height, ofBaseApp* appPtr){
+void timelinePanel::setup(int x, int y, int width, int height, ofBaseApp* appPtr){
     
     bMainApp = dynamic_cast<ofApp*>(appPtr);
     
@@ -29,27 +29,27 @@ void BodyPanel::setup(int x, int y, int width, int height, ofBaseApp* appPtr){
 }
 
 //-------------------------------------------------
-void BodyPanel::update(){
+void timelinePanel::update(){
     
     
 }
 
 //-------------------------------------------------
-void BodyPanel::draw(){
+void timelinePanel::draw(){
     
     drawPanel();
     
 }
 
 //-------------------------------------------------
-void BodyPanel::keyPressed(int key){
+void timelinePanel::keyPressed(int key){
     
     ofLog() << "BODY";
     
 }
 
 //-------------------------------------------------
-void BodyPanel::mousePressed(int x, int y, int button){
+void timelinePanel::mousePressed(int x, int y, int button){
     if(y > _y && y < _y+_h){
         ofLog() << "body pressed";
         setBackgroundColor(ofColor::yellow);
@@ -62,7 +62,7 @@ void BodyPanel::mousePressed(int x, int y, int button){
 }
 
 //-------------------------------------------------
-void BodyPanel::mouseReleased(int x, int y, int button){
+void timelinePanel::mouseReleased(int x, int y, int button){
 
     ofLog() << "body released";
     setBackgroundColor(ofColor::darkGray);

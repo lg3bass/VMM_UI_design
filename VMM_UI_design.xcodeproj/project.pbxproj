@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1298E72A66CE3DF32ECCC661 /* BodyPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB5263E9621084D2D19B61BA /* BodyPanel.cpp */; };
+		1298E72A66CE3DF32ECCC661 /* timelinePanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB5263E9621084D2D19B61BA /* timelinePanel.cpp */; };
 		83544058B560DB13F094EB29 /* HeaderPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CC239F720478C794B23B21 /* HeaderPanel.cpp */; };
 		9CF4130A7E6DA19A3DC42B9A /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C954E0E8B7DB9D6983309883 /* ofxSmartFont.cpp */; };
 		B00A0E809ACC594F9EA51A4E /* FooterPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39892A51AF00F6CCD6762A45 /* FooterPanel.cpp */; };
+		BF5006A51EF8B51C00488519 /* headerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF5006A31EF8B51C00488519 /* headerUI.cpp */; };
 		C9466C434D1CF8AB968D298D /* ofxDatGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26490D7CC31EF7D6ED5F925A /* ofxDatGui.cpp */; };
 		D3C1C48E59CAA2D68C0DD477 /* ofxDatGuiComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3E3B8F332A1A3C7EDF4998 /* ofxDatGuiComponent.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -70,6 +71,8 @@
 		BCC84C6EB3417706F4F762F0 /* ofxDatGuiComponent.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiComponent.h; path = ../../../addons/ofxDatGui/src/core/ofxDatGuiComponent.h; sourceTree = SOURCE_ROOT; };
 		BE61923C920EEC56683EA564 /* HeaderPanel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = HeaderPanel.h; path = src/panels/HeaderPanel.h; sourceTree = SOURCE_ROOT; };
 		BF1B3C901EEC20B800D004F5 /* ofxDatGuiThemesVMM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxDatGuiThemesVMM.h; path = themes/ofxDatGuiThemesVMM.h; sourceTree = "<group>"; };
+		BF5006A31EF8B51C00488519 /* headerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = headerUI.cpp; path = panels/headerUI.cpp; sourceTree = "<group>"; };
+		BF5006A41EF8B51C00488519 /* headerUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = headerUI.h; path = panels/headerUI.h; sourceTree = "<group>"; };
 		C085A33340AB0C1DB647AC2F /* ofxDatGuiTextInput.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiTextInput.h; path = ../../../addons/ofxDatGui/src/components/ofxDatGuiTextInput.h; sourceTree = SOURCE_ROOT; };
 		C84ED7FCC017328C6F58283D /* ofxDatGuiColorPicker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiColorPicker.h; path = ../../../addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h; sourceTree = SOURCE_ROOT; };
 		C954E0E8B7DB9D6983309883 /* ofxSmartFont.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSmartFont.cpp; path = ../../../addons/ofxDatGui/src/libs/ofxSmartFont/ofxSmartFont.cpp; sourceTree = SOURCE_ROOT; };
@@ -84,9 +87,9 @@
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		EA98BBC6FAFEC7657B669EE1 /* BodyPanel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = BodyPanel.h; path = src/panels/BodyPanel.h; sourceTree = SOURCE_ROOT; };
+		EA98BBC6FAFEC7657B669EE1 /* timelinePanel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = timelinePanel.h; path = src/panels/timelinePanel.h; sourceTree = SOURCE_ROOT; };
 		F59384ED57A7C6A7A8B0351D /* ofxDatGuiEvents.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiEvents.h; path = ../../../addons/ofxDatGui/src/core/ofxDatGuiEvents.h; sourceTree = SOURCE_ROOT; };
-		FB5263E9621084D2D19B61BA /* BodyPanel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = BodyPanel.cpp; path = src/panels/BodyPanel.cpp; sourceTree = SOURCE_ROOT; };
+		FB5263E9621084D2D19B61BA /* timelinePanel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = timelinePanel.cpp; path = src/panels/timelinePanel.cpp; sourceTree = SOURCE_ROOT; };
 		FDA86F4C2F1F1964D35391C6 /* ofxDatGuiButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiButton.h; path = ../../../addons/ofxDatGui/src/components/ofxDatGuiButton.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -114,10 +117,12 @@
 		537CB8219458C0FE72988923 /* panels */ = {
 			isa = PBXGroup;
 			children = (
-				FB5263E9621084D2D19B61BA /* BodyPanel.cpp */,
-				EA98BBC6FAFEC7657B669EE1 /* BodyPanel.h */,
+				FB5263E9621084D2D19B61BA /* timelinePanel.cpp */,
+				EA98BBC6FAFEC7657B669EE1 /* timelinePanel.h */,
 				39892A51AF00F6CCD6762A45 /* FooterPanel.cpp */,
 				36F6BD4C8B1E34D907FD476B /* FooterPanel.h */,
+				BF5006A31EF8B51C00488519 /* headerUI.cpp */,
+				BF5006A41EF8B51C00488519 /* headerUI.h */,
 				81CC239F720478C794B23B21 /* HeaderPanel.cpp */,
 				BE61923C920EEC56683EA564 /* HeaderPanel.h */,
 				83C8EAF5BA8DE01BC1292354 /* Panel.h */,
@@ -349,8 +354,9 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
-				1298E72A66CE3DF32ECCC661 /* BodyPanel.cpp in Sources */,
+				1298E72A66CE3DF32ECCC661 /* timelinePanel.cpp in Sources */,
 				B00A0E809ACC594F9EA51A4E /* FooterPanel.cpp in Sources */,
+				BF5006A51EF8B51C00488519 /* headerUI.cpp in Sources */,
 				83544058B560DB13F094EB29 /* HeaderPanel.cpp in Sources */,
 				D3C1C48E59CAA2D68C0DD477 /* ofxDatGuiComponent.cpp in Sources */,
 				9CF4130A7E6DA19A3DC42B9A /* ofxSmartFont.cpp in Sources */,

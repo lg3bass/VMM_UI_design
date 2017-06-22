@@ -26,11 +26,13 @@ void HeaderPanel::setup(int x, int y, int width, int height, ofBaseApp *appPtr){
     setBorderColor(ofColor::red);
     setBorderWidth(2);
     
+    mainUI.setup(appPtr);
 }
 
 //-------------------------------------------------
 void HeaderPanel::update(){
    
+    mainUI.update();
     
 }
 
@@ -38,6 +40,8 @@ void HeaderPanel::update(){
 void HeaderPanel::draw(){
     
     drawPanel();
+    
+    mainUI.draw();
     
 }
 
