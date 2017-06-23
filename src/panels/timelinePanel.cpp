@@ -44,6 +44,8 @@ void timelinePanel::draw(){
     
     drawPanel();
     
+    drawData();
+    
 }
 
 //-------------------------------------------------
@@ -76,6 +78,40 @@ void timelinePanel::mouseReleased(int x, int y, int button){
 }
 
 //-------------------------------------------------
+void timelinePanel::drawData(){
 
+    float ml = 80;
+    float mt = 100;
+
+    float h_unit = 100;
+    float v_unit = 15;
+
+    ofDrawBitmapString("TRACK:"     , 0, _y+mt+v_unit*0);
+    ofDrawBitmapString("clip:"      , 0, _y+mt+v_unit*1);
+    ofDrawBitmapString("page:"      , 0, _y+mt+v_unit*2);
+    ofDrawBitmapString("cue:"       , 0, _y+mt+v_unit*3);
+    ofDrawBitmapString("keys:", 0, _y+mt+v_unit*4);
+
+
+    for(int i=0; i<NUMBER_OF_TRACKS;i++){
+
+        ofDrawBitmapString(ofToString(i), i*100+ml, _y+mt+v_unit*0);
+        ofDrawBitmapString(data.timeline.tracks[i].selected_clip, i*100+ml, _y+mt+v_unit*1);
+        ofDrawBitmapString(data.timeline.tracks[i].selected_clip, i*100+ml, _y+mt+v_unit*2);
+        ofDrawBitmapString(data.timeline.tracks[i].cuedToPlay ? "true" : "false", i*100+ml, _y+mt+v_unit*3);
+        
+        //data.timeline.keyframes.keys.size()
+        
+        for(int k=0; k<4;k++){
+            string ky = "["+ofToString(data.timeline.keyframes.keys[k].frm)+","+ofToString(data.timeline.keyframes.keys[k].val)+"],";
+            
+            ofDrawBitmapString(ky, i*100+ml, _y+mt+v_unit*4);
+            
+        }
+        
+    }
+
+    
+}
 
 //-------------------------------------------------

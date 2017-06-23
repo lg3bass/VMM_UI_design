@@ -60,12 +60,21 @@ public:
     timelineData(){
         
         for(int i = 0;i<NUMBER_OF_TRACKS;i++){
+            //add a track
             vmmTrack mytrack;
             mytrack.cuedToPlay = false;
             
+            //add keys
+            for(int k=0;k<4;k++){
+                key kf;
+                kf.frm = 0;
+                kf.val = 0;
+                timeline.keyframes.keys.push_back(kf);
+            }
+            
             //tlTrackType trackType = tlCurves;
             //mytrack._tlTrack.push_back(trackType);
-
+            
             timeline.tracks.push_back(mytrack);
             
         }
