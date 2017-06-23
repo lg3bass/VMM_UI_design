@@ -11,7 +11,6 @@
 #define BODY_PANEL_HEIGHT 0.74
 #define FOOTER_PANEL_HEIGHT 0.1
 
-
 struct appData {
     string selected_panel_name;
     ofColor txt_color;
@@ -35,13 +34,11 @@ struct controllerData {
     bool snap;
     bool drive;
     bool osc;
-    
 };
 
 class ofApp : public ofBaseApp{
 
 	public:
-    
         appData myAppData;
         controllerData myCtrlData;
     
@@ -63,7 +60,8 @@ class ofApp : public ofBaseApp{
     
         void setVar(string text);
     
-        void setControllerData(int data);
+        void setControllerData(string name, int data);
+    
         void resetControllerData();
     
     private:

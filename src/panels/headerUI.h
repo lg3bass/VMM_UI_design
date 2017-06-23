@@ -20,7 +20,8 @@
 class headerUI {
     
 public:
-        
+    
+    
     void setup(ofBaseApp* appPtr);
     void update();
     void draw();
@@ -30,6 +31,10 @@ public:
    
 
 private:
+    
+    void setupGUI();
+    void updateGUI();
+    void drawGUI();
     
     //S1
     ofTrueTypeFont font;
@@ -98,7 +103,7 @@ private:
     //S5
     ofxDatGuiSlider* linkSlider;
    
-    void onTrackMatrixInputEvent(ofxDatGuiMatrixEvent e);
+    void onMatrixInputEvent(ofxDatGuiMatrixEvent e);
     void onPageMatrixInputEvent(ofxDatGuiMatrixEvent e);
     void onClipMatrixInputEvent(ofxDatGuiMatrixEvent e);
     

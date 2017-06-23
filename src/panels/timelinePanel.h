@@ -12,27 +12,10 @@
 
 #include "ofMain.h"
 #include "Panel.h"
+#include "timelineData.h"
 
 #endif /* timelinePanel_h */
 
-
-
-struct kf {
-    int frm;
-    int val;
-};
-
-struct timlineData{
-    vector<kf> keys;
-    int selected_key;
-    float clampL;
-    float clampH;
-    
-    bool snap;
-    bool drive;
-    bool osc;
-    
-};
 
 
 class timelinePanel : public Panel{
@@ -50,6 +33,8 @@ public:
     void mouseReleased(int x, int y, int button);
     
 private:
+    
+    timelineData data;
     
     ofTrueTypeFont	verdana;
     ofColor bordCol;

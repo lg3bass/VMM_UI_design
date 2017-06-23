@@ -25,6 +25,11 @@ void timelinePanel::setup(int x, int y, int width, int height, ofBaseApp* appPtr
     setBackgroundColor(ofColor::darkGray);
     setBorderColor(ofColor::mediumOrchid);
     setBorderWidth(2);
+    
+    
+
+    
+    //data.timeline.tracks[0].selected_page = 2;
 
 }
 
@@ -51,8 +56,8 @@ void timelinePanel::keyPressed(int key){
 //-------------------------------------------------
 void timelinePanel::mousePressed(int x, int y, int button){
     if(y > _y && y < _y+_h){
-        ofLog() << "body pressed";
-        setBackgroundColor(ofColor::yellow);
+        //ofLog() << "body pressed";
+        //setBackgroundColor(ofColor::yellow);
         
         bMainApp->myAppData.selected_panel_name = "BODY";
         bMainApp->myAppData.txt_color = ofColor::darkKhaki;
@@ -64,8 +69,8 @@ void timelinePanel::mousePressed(int x, int y, int button){
 //-------------------------------------------------
 void timelinePanel::mouseReleased(int x, int y, int button){
 
-    ofLog() << "body released";
-    setBackgroundColor(ofColor::darkGray);
+    //ofLog() << "body released";
+    //setBackgroundColor(ofColor::darkGray);
 
     
 }

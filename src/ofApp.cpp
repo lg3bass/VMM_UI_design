@@ -132,6 +132,13 @@ void ofApp::setVar(string text){
 }
 
 //--------------------------------------------------------------
+void ofApp::setControllerData(string name, int data){
+    
+    ofLog() << "GREETINGS FROM: " << name << ofToString(data);
+}
+
+
+//--------------------------------------------------------------
 void ofApp::resetControllerData(){
     myCtrlData.selected_track = 1;
     myCtrlData.selected_clip = 1;
