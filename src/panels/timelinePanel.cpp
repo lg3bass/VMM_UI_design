@@ -27,9 +27,8 @@ void timelinePanel::setup(int x, int y, int width, int height, ofBaseApp* appPtr
     setBorderWidth(2);
     
     
+    verdana9.load("verdana.ttf", 7, true, true);
 
-    
-    //data.timeline.tracks[0].selected_page = 2;
 
 }
 
@@ -85,27 +84,28 @@ void timelinePanel::drawData(){
 
     float h_unit = 100;
     float v_unit = 15;
+    
 
-    ofDrawBitmapString("TRACK:"     , 0, _y+mt+v_unit*0);
-    ofDrawBitmapString("clip:"      , 0, _y+mt+v_unit*1);
-    ofDrawBitmapString("page:"      , 0, _y+mt+v_unit*2);
-    ofDrawBitmapString("cue:"       , 0, _y+mt+v_unit*3);
-    ofDrawBitmapString("keys:", 0, _y+mt+v_unit*4);
+    verdana9.drawString("TRACK:"     , 0, _y+mt+v_unit*0);
+    verdana9.drawString("clip:"      , 0, _y+mt+v_unit*1);
+    verdana9.drawString("page:"      , 0, _y+mt+v_unit*2);
+    verdana9.drawString("cue:"       , 0, _y+mt+v_unit*3);
+    verdana9.drawString("keys:", 0, _y+mt+v_unit*4);
 
 
     for(int i=0; i<NUMBER_OF_TRACKS;i++){
 
-        ofDrawBitmapString(ofToString(i), i*100+ml, _y+mt+v_unit*0);
-        ofDrawBitmapString(data.timeline.tracks[i].selected_clip, i*100+ml, _y+mt+v_unit*1);
-        ofDrawBitmapString(data.timeline.tracks[i].selected_clip, i*100+ml, _y+mt+v_unit*2);
-        ofDrawBitmapString(data.timeline.tracks[i].cuedToPlay ? "true" : "false", i*100+ml, _y+mt+v_unit*3);
+        verdana9.drawString(ofToString(i+1), i*100+ml, _y+mt+v_unit*0);
+        verdana9.drawString(ofToString(getClip(i)+1), i*100+ml, _y+mt+v_unit*1);
+        verdana9.drawString(ofToString(getPage(i)+1), i*100+ml, _y+mt+v_unit*2);
+        verdana9.drawString(getCuedToPlay(i) ? "true" : "false", i*100+ml, _y+mt+v_unit*3);
         
         //data.timeline.keyframes.keys.size()
         
         for(int k=0; k<4;k++){
             string ky = "["+ofToString(data.timeline.keyframes.keys[k].frm)+","+ofToString(data.timeline.keyframes.keys[k].val)+"],";
             
-            ofDrawBitmapString(ky, i*100+ml, _y+mt+v_unit*4);
+            verdana9.drawString(ky, i*100+ml, _y+mt+v_unit*4);
             
         }
         
@@ -115,3 +115,52 @@ void timelinePanel::drawData(){
 }
 
 //-------------------------------------------------
+int timelinePanel::getTrack(){
+    return data.timeline.selected_track;
+}
+
+//-------------------------------------------------
+void timelinePanel::setTrack(int _track){
+    data.timeline.selected_track = _track;
+}
+
+//-------------------------------------------------
+int timelinePanel::getClip(int _track){
+    return data.timeline.tracks[_track].selected_clip;
+}
+
+//-------------------------------------------------
+int timelinePanel::getClip(){
+    return data.timeline.tracks[getTrack()].selected_clip;
+}
+
+//-------------------------------------------------
+void timelinePanel::setClip(int _clip){
+    data.timeline.tracks[getTrack()].selected_clip = _clip;
+}
+
+//-------------------------------------------------
+int timelinePanel::getPage(int _track){
+    return data.timeline.tracks[_track].selected_page;
+}
+
+//-------------------------------------------------
+int timelinePanel::getPage(){
+    return data.timeline.tracks[getTrack()].selected_page;
+}
+
+//-------------------------------------------------
+void timelinePanel::setPage(int _page){
+    data.timeline.tracks[getTrack()].selected_page = _page;
+}
+
+//-------------------------------------------------
+bool timelinePanel::getCuedToPlay(int _track){
+    return data.timeline.tracks[_track].cuedToPlay;
+}
+
+//-------------------------------------------------
+bool timelinePanel::getCuedToPlay(){
+    return data.timeline.tracks[getTrack()].cuedToPlay;
+}
+

@@ -124,17 +124,23 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 }
 
 
-void ofApp::setVar(string text){
-    
-    ofLog() << "The message is: " << text;
-    
-    
-}
 
 //--------------------------------------------------------------
 void ofApp::setControllerData(string name, int data){
     
-    ofLog() << "GREETINGS FROM: " << name << ofToString(data);
+    if (name == "TRACK") {
+
+        timePanel.setTrack(data);
+        headerPanel.setClip(timePanel.getClip(data));
+        headerPanel.setPage(timePanel.getPage(data));
+        
+    } else if(name == "PAGE") {
+        timePanel.setPage(data);
+    } else if(name == "CLIP"){
+        timePanel.setClip(data);
+    }
+    
+
 }
 
 

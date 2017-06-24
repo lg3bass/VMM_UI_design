@@ -32,6 +32,8 @@ void headerUI::setupGUI() {
     tracks->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     tracks->onMatrixEvent(this, &headerUI::onMatrixInputEvent);
     
+
+    
     float rowH = tracks->getHeight();
     
     clips = new ofxDatGuiMatrix("CLIP", 10, true);
@@ -489,3 +491,6 @@ void headerUI::drawGUI(){
     linkSlider->draw();
     
 }
+
+
+

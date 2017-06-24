@@ -34,11 +34,29 @@ public:
     
     void drawData();
     
-private:
-    
     timelineData data;
     
-    ofTrueTypeFont	verdana;
+    //GETTERS & SETTERS
+    int getTrack();
+    void setTrack(int _track);
+    
+    int getClip(int _track);
+    int getClip();
+    void setClip(int _clip);
+    
+    int getPage(int _track);
+    int getPage();
+    void setPage(int _page);
+    
+    bool getCuedToPlay(int _track);
+    bool getCuedToPlay();
+    void setCuedToPlay(int _track);
+    
+private:
+    
+    ofTrueTypeFont	verdana9;
+    
+    
     ofColor bordCol;
     int bordWidth;
 

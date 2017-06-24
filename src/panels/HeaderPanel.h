@@ -34,6 +34,10 @@ public:
     void mouseReleased(int x, int y, int button);
     
     headerUI mainUI;
+    
+    void setTrack(int _track);
+    void setClip(int _clip);
+    void setPage(int _page);
 
 private:
     

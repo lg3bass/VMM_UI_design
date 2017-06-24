@@ -58,9 +58,9 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        void setVar(string text);
     
         void setControllerData(string name, int data);
+        
     
         void resetControllerData();
     

@@ -75,7 +75,28 @@ void HeaderPanel::mouseReleased(int x, int y, int button){
     
 }
 
-//-------------------------------------------------
+//--------------------------------------------------------------
+void HeaderPanel::setTrack(int _track){
+    
+    vector<int> pass2track;
+    pass2track.push_back(_track);
+    mainUI.tracks->setSelected(pass2track);
+}
 
 
-//-------------------------------------------------
+//--------------------------------------------------------------
+void HeaderPanel::setClip(int _clip){
+    
+    vector<int> pass2clip;
+    pass2clip.push_back(_clip);
+    mainUI.clips->setSelected(pass2clip);
+}
+
+//--------------------------------------------------------------
+void HeaderPanel::setPage(int _page){
+    
+    vector<int> pass2page;
+    pass2page.push_back(_page);
+    mainUI.pages->setSelected(pass2page);
+}
+

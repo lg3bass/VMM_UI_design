@@ -26,12 +26,6 @@ public:
     void update();
     void draw();
     
-    
-
-   
-
-private:
-    
     void setupGUI();
     void updateGUI();
     void drawGUI();
@@ -102,7 +96,7 @@ private:
     
     //S5
     ofxDatGuiSlider* linkSlider;
-   
+    
     void onMatrixInputEvent(ofxDatGuiMatrixEvent e);
     void onPageMatrixInputEvent(ofxDatGuiMatrixEvent e);
     void onClipMatrixInputEvent(ofxDatGuiMatrixEvent e);
@@ -111,6 +105,8 @@ private:
     void onButtonEvent(ofxDatGuiButtonEvent e);
     void onTextInputEvent(ofxDatGuiTextInputEvent e);
     void onSliderEvent(ofxDatGuiSliderEvent e);
+
+
     
     
 };
