@@ -79,10 +79,10 @@ void timelinePanel::mouseReleased(int x, int y, int button){
 //-------------------------------------------------
 void timelinePanel::drawData(){
 
-    float ml = 80;
-    float mt = 100;
+    float ml = 60;
+    float mt = 80;
 
-    float h_unit = 100;
+    float h_unit = 105;
     float v_unit = 15;
     
 
@@ -102,12 +102,15 @@ void timelinePanel::drawData(){
         
         //data.timeline.keyframes.keys.size()
         
-        for(int k=0; k<4;k++){
-            string ky = "["+ofToString(data.timeline.keyframes.keys[k].frm)+","+ofToString(data.timeline.keyframes.keys[k].val)+"],";
+        
+        string ky;
+        for(int k=0; k<3;k++){
             
-            verdana9.drawString(ky, i*100+ml, _y+mt+v_unit*4);
+            
+            ky += "["+ofToString(data.timeline.keyframes.keys[k].frm)+","+ofToString(data.timeline.keyframes.keys[k].val)+"],";
             
         }
+        verdana9.drawString(ky, i*100+ml, _y+mt+v_unit*4);
         
     }
 

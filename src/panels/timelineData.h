@@ -29,7 +29,7 @@ public:
 
     struct key {
         int frm;
-        int val;
+        float val;
     };
     
     struct tlData {
@@ -64,11 +64,11 @@ public:
             vmmTrack mytrack;
             mytrack.cuedToPlay = false;
             
-            //add keys
-            for(int k=0;k<4;k++){
+            //add test keys
+            for(int k=0;k<3;k++){
                 key kf;
-                kf.frm = 0;
-                kf.val = 0;
+                kf.frm = k*15;
+                kf.val = ofRandom(100.0);
                 timeline.keyframes.keys.push_back(kf);
             }
             
