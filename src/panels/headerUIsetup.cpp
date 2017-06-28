@@ -242,6 +242,7 @@ void headerUI::setupGUI() {
     addTr->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     addTr->setBorderVisible(TRUE);
     addTr->setBorder(ofColor::darkGrey, 1);
+    addTr->onButtonEvent(this, &headerUI::onButtonEvent);
     
     remTr = new ofxDatGuiButton("-");
     remTr->setTheme(new ofxDatGuiThemeVMM);
@@ -251,6 +252,7 @@ void headerUI::setupGUI() {
     remTr->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     remTr->setBorderVisible(TRUE);
     remTr->setBorder(ofColor::darkGrey, 1);
+    remTr->onButtonEvent(this, &headerUI::onButtonEvent);
     
     trackOptions.push_back("curves");
     trackOptions.push_back("bangs");
@@ -264,6 +266,9 @@ void headerUI::setupGUI() {
     trackDropdown->setPosition(S3.x+addTr->getWidth()+remTr->getWidth(), rowH*2);
     trackDropdown->setBorderVisible(TRUE);
     trackDropdown->setBorder(ofColor::darkGrey, 1);
+    trackDropdown->onDropdownEvent(this, &headerUI::onDDInputEvent);
+    
+
     
     trackName = new ofxDatGuiTextInput("", "<<ENTER NAME>>");
     trackName->setTheme(new ofxDatGuiThemeVMM);
@@ -274,6 +279,7 @@ void headerUI::setupGUI() {
     trackName->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     trackName->setBorderVisible(TRUE);
     trackName->setBorder(ofColor::darkGrey, 1);
+    trackName->onTextInputEvent(this, &headerUI::onTextInputEvent);
     
     //section S4 - width 250 (750-1000)
     

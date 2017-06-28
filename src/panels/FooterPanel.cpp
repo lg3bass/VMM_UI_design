@@ -45,15 +45,14 @@ void FooterPanel::draw(){
 //-------------------------------------------------
 void FooterPanel::keyPressed(int key){
     
-    ofLog() << "FOOTER";
+
     
 }
 
 //-------------------------------------------------
 void FooterPanel::mousePressed(int x, int y, int button){
     if(y > _y && y < ofGetHeight()){
-        //ofLog() << "footer clicked";
-        //setBackgroundColor(ofColor::green);
+
         
         fMainApp->myAppData.selected_panel_name = "FOOTER";
         fMainApp->myAppData.txt_color = ofColor::green;

@@ -68,7 +68,7 @@ public:
             for(int k=0;k<3;k++){
                 key kf;
                 kf.frm = k*15;
-                kf.val = ofRandom(100.0);
+                kf.val = 0;
                 timeline.keyframes.keys.push_back(kf);
             }
             

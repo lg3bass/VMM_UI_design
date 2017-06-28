@@ -50,15 +50,14 @@ void timelinePanel::draw(){
 //-------------------------------------------------
 void timelinePanel::keyPressed(int key){
     
-    ofLog() << "BODY";
+
     
 }
 
 //-------------------------------------------------
 void timelinePanel::mousePressed(int x, int y, int button){
     if(y > _y && y < _y+_h){
-        //ofLog() << "body pressed";
-        //setBackgroundColor(ofColor::yellow);
+
         
         bMainApp->myAppData.selected_panel_name = "BODY";
         bMainApp->myAppData.txt_color = ofColor::darkKhaki;
@@ -114,8 +113,29 @@ void timelinePanel::drawData(){
         
     }
 
+    drawTrackData(getTrack());
     
 }
+
+//-------------------------------------------------
+void timelinePanel::drawTrackData(int _track){
+    
+    float ml = 60;
+    float mt = 200;
+    
+    float h_unit = 105;
+    float v_unit = 15;
+    
+    string tlt = "Timeline tracks in track " + ofToString(_track) + ":  " + ofToString(data.timeline.tracks[_track].tlTracks.size());
+    
+    verdana9.drawString(tlt, _x+ml, _y+mt);
+    
+    //cout << "Timeline tracks in track " << _track << ":  " << data.timeline.tracks[_track].tlTracks.size() << endl;
+    
+    
+}
+
+
 
 //-------------------------------------------------
 int timelinePanel::getTrack(){
@@ -167,3 +187,13 @@ bool timelinePanel::getCuedToPlay(){
     return data.timeline.tracks[getTrack()].cuedToPlay;
 }
 
+//-------------------------------------------------
+void timelinePanel::addtlTrack(int _track){
+    
+    timelineData::track newTrack;
+    newTrack.name = "test";
+    newTrack.type = timelineData::trackType(2);
+    
+    data.timeline.tracks[_track].tlTracks.push_back(newTrack);
+    
+}

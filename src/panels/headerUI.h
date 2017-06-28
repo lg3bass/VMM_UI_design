@@ -30,6 +30,9 @@ public:
     void updateGUI();
     void drawGUI();
     
+    int add_type;
+    string add_name;
+    
     //S1
     ofTrueTypeFont font;
     ofxDatGuiMatrix* tracks;
@@ -100,6 +103,8 @@ public:
     void onMatrixInputEvent(ofxDatGuiMatrixEvent e);
     void onPageMatrixInputEvent(ofxDatGuiMatrixEvent e);
     void onClipMatrixInputEvent(ofxDatGuiMatrixEvent e);
+    
+    void onDDInputEvent(ofxDatGuiDropdownEvent e);
     
     
     void onButtonEvent(ofxDatGuiButtonEvent e);

@@ -48,15 +48,14 @@ void HeaderPanel::draw(){
 //-------------------------------------------------
 void HeaderPanel::keyPressed(int key){
     
-    ofLog() << "HEADER";
+
     
 }
 
 //-------------------------------------------------
 void HeaderPanel::mousePressed(int x, int y, int button){
     if(y < _h){
-        //ofLog() << "header pressed";
-        ///setBackgroundColor(ofColor::purple);
+
         
         hMainApp->myAppData.selected_panel_name = "HEADER";
         hMainApp->myAppData.txt_color = ofColor::purple;

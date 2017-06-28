@@ -143,6 +143,12 @@ void ofApp::setControllerData(string name, int data){
 
 }
 
+//--------------------------------------------------------------
+void ofApp::addTLTrack(string name, int type){
+    
+    timePanel.addtlTrack(timePanel.getTrack());
+    
+}
 
 //--------------------------------------------------------------
 void ofApp::resetControllerData(){

@@ -60,7 +60,8 @@ class ofApp : public ofBaseApp{
     
     
         void setControllerData(string name, int data);
-        
+        void addTLTrack(string name, int type);
+    
     
         void resetControllerData();
     

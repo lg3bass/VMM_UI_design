@@ -21,6 +21,12 @@
 class timelinePanel : public Panel{
 
 public:
+
+    struct fart {
+        string name;
+        //trackType type;
+    };
+    
     
     void setup(int x, int y, int width, int height, ofBaseApp* appPtr);
     void update();
@@ -33,6 +39,7 @@ public:
     void mouseReleased(int x, int y, int button);
     
     void drawData();
+    void drawTrackData(int _track);
     
     timelineData data;
     
@@ -51,6 +58,8 @@ public:
     bool getCuedToPlay(int _track);
     bool getCuedToPlay();
     void setCuedToPlay(int _track);
+    
+    void addtlTrack(int _track);
     
 private:
     
