@@ -134,7 +134,7 @@ void ofApp::setControllerData(string name, int data){
         headerPanel.setClip(timePanel.getClip(data));
         headerPanel.setPage(timePanel.getPage(data));
         
-    } else if(name == "PAGE") {
+    } else if(name == "PAGES") {
         timePanel.setPage(data);
     } else if(name == "CLIP"){
         timePanel.setClip(data);
@@ -146,7 +146,7 @@ void ofApp::setControllerData(string name, int data){
 //--------------------------------------------------------------
 void ofApp::addTLTrack(string name, int type){
     
-    timePanel.addtlTrack(timePanel.getTrack());
+    timePanel.addtlTrack(name, type);
     
 }
 

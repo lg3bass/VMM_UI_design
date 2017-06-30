@@ -30,29 +30,32 @@ void headerUI::setupGUI() {
     tracks->setWidth(matrixWidth, 60.0);
     tracks->setPosition(S1.x, S1.y);
     tracks->setLabelAlignment(ofxDatGuiAlignment::CENTER);
-    tracks->onMatrixEvent(this, &headerUI::onMatrixInputEvent);
+    tracks->onMatrixEvent(this, &headerUI::onTrackMatrixInputEvent);
     
 
     
     float rowH = tracks->getHeight();
+    
+    pages = new ofxDatGuiMatrix("PAGES", 10, true);
+    pages->setTheme(new ofxDatGuiThemeVMM());
+    pages->setRadioMode(true);
+    pages->setOpacity(.75);
+    pages->setWidth(matrixWidth, 60.0);
+    pages->setPosition(S1.x, rowH*1);
+    pages->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    pages->onMatrixEvent(this, &headerUI::onPageMatrixInputEvent);
+    
     
     clips = new ofxDatGuiMatrix("CLIP", 10, true);
     clips->setTheme(new ofxDatGuiThemeVMM());
     clips->setRadioMode(true);
     clips->setOpacity(.75);
     clips->setWidth(matrixWidth, 60.0);
-    clips->setPosition(S1.x, rowH*1);
+    clips->setPosition(S1.x, rowH*2);
     clips->setLabelAlignment(ofxDatGuiAlignment::CENTER);
-    clips->onMatrixEvent(this, &headerUI::onMatrixInputEvent);
+    clips->onMatrixEvent(this, &headerUI::onClipMatrixInputEvent);
     
-    pages = new ofxDatGuiMatrix("PAGE", 10, true);
-    pages->setTheme(new ofxDatGuiThemeVMM());
-    pages->setRadioMode(true);
-    pages->setOpacity(.75);
-    pages->setWidth(matrixWidth, 60.0);
-    pages->setPosition(S1.x, rowH*2);
-    pages->setLabelAlignment(ofxDatGuiAlignment::CENTER);
-    pages->onMatrixEvent(this, &headerUI::onMatrixInputEvent);
+
     
     
     
@@ -254,6 +257,7 @@ void headerUI::setupGUI() {
     remTr->setBorder(ofColor::darkGrey, 1);
     remTr->onButtonEvent(this, &headerUI::onButtonEvent);
     
+    trackOptions.push_back("------");
     trackOptions.push_back("curves");
     trackOptions.push_back("bangs");
     trackOptions.push_back("MIDI");
@@ -397,8 +401,9 @@ void headerUI::updateGUI(){
     
     //S1
     tracks->update();
-    clips->update();
     pages->update();
+    clips->update();
+    
     
     
     //S2
@@ -453,8 +458,9 @@ void headerUI::drawGUI(){
     
     //S1
     tracks->draw();
-    clips->draw();
     pages->draw();
+    clips->draw();
+    
     
     
     //S2

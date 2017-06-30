@@ -59,7 +59,7 @@ public:
     bool getCuedToPlay();
     void setCuedToPlay(int _track);
     
-    void addtlTrack(int _track);
+    void addtlTrack(string _name, int _type);
     
 private:
     

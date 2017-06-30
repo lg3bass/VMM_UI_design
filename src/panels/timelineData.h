@@ -20,8 +20,13 @@ public:
         trackType type;
     };
     
-    struct vmmTrack {
+    struct page {
+        string name;
         vector<track> tlTracks;
+    };
+    
+    struct vmmTrack {
+        vector<page> tlPages;
         int selected_clip = 0;
         int selected_page = 0;
         bool cuedToPlay;
@@ -59,10 +64,20 @@ public:
     
     timelineData(){
         
-        for(int i = 0;i<NUMBER_OF_TRACKS;i++){
+        
+        for(int i = 0;i<NUMBER_OF_TRACKS;i++){              //add blank tracks
             //add a track
             vmmTrack mytrack;
             mytrack.cuedToPlay = false;
+            
+            //add blank pages
+            for(int p = 0;p<10;p++){
+                
+                page myPage;                                //add pages
+                myPage.name = "PAGE_"+ofToString(p);
+                mytrack.tlPages.push_back(myPage);
+
+            }
             
             //add test keys
             for(int k=0;k<3;k++){
@@ -72,8 +87,6 @@ public:
                 timeline.keyframes.keys.push_back(kf);
             }
             
-            //tlTrackType trackType = tlCurves;
-            //mytrack._tlTrack.push_back(trackType);
             
             timeline.tracks.push_back(mytrack);
             

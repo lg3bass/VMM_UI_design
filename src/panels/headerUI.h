@@ -100,18 +100,19 @@ public:
     //S5
     ofxDatGuiSlider* linkSlider;
     
-    void onMatrixInputEvent(ofxDatGuiMatrixEvent e);
+    void onTrackMatrixInputEvent(ofxDatGuiMatrixEvent e);
     void onPageMatrixInputEvent(ofxDatGuiMatrixEvent e);
     void onClipMatrixInputEvent(ofxDatGuiMatrixEvent e);
     
     void onDDInputEvent(ofxDatGuiDropdownEvent e);
-    
-    
-    void onButtonEvent(ofxDatGuiButtonEvent e);
     void onTextInputEvent(ofxDatGuiTextInputEvent e);
+    void onButtonEvent(ofxDatGuiButtonEvent e);
+
     void onSliderEvent(ofxDatGuiSliderEvent e);
 
-
+    //
+    void resetTrackDropdown();
+    
     
     
 };

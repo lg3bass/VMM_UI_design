@@ -86,8 +86,8 @@ void timelinePanel::drawData(){
     
 
     verdana9.drawString("TRACK:"     , 0, _y+mt+v_unit*0);
-    verdana9.drawString("clip:"      , 0, _y+mt+v_unit*1);
-    verdana9.drawString("page:"      , 0, _y+mt+v_unit*2);
+    verdana9.drawString("page:"      , 0, _y+mt+v_unit*1);
+    verdana9.drawString("clip:"      , 0, _y+mt+v_unit*2);
     verdana9.drawString("cue:"       , 0, _y+mt+v_unit*3);
     verdana9.drawString("keys:", 0, _y+mt+v_unit*4);
 
@@ -95,8 +95,8 @@ void timelinePanel::drawData(){
     for(int i=0; i<NUMBER_OF_TRACKS;i++){
 
         verdana9.drawString(ofToString(i+1), i*100+ml, _y+mt+v_unit*0);
-        verdana9.drawString(ofToString(getClip(i)+1), i*100+ml, _y+mt+v_unit*1);
-        verdana9.drawString(ofToString(getPage(i)+1), i*100+ml, _y+mt+v_unit*2);
+        verdana9.drawString(ofToString(getPage(i)+1), i*100+ml, _y+mt+v_unit*1);
+        verdana9.drawString(ofToString(getClip(i)+1), i*100+ml, _y+mt+v_unit*2);
         verdana9.drawString(getCuedToPlay(i) ? "true" : "false", i*100+ml, _y+mt+v_unit*3);
         
         //data.timeline.keyframes.keys.size()
@@ -126,16 +126,26 @@ void timelinePanel::drawTrackData(int _track){
     float h_unit = 105;
     float v_unit = 15;
     
-    string tlt = "Timeline tracks in track " + ofToString(_track) + ":  " + ofToString(data.timeline.tracks[_track].tlTracks.size());
+    int num_tracks_on_page = data.timeline.tracks[_track].tlPages[getPage(_track)].tlTracks.size();
+    
+    string tlt = "TRACK " + ofToString(_track+1) + " > PAGE " + ofToString(getPage(_track+1)) + "[" + ofToString(num_tracks_on_page) + "] - " ;
+    
+    tlt += "(";
+    
+    for(int i=0;i<num_tracks_on_page;i++){
+        
+        tlt += "[" + ofToString(data.timeline.tracks[_track].tlPages[getPage(_track)].tlTracks[i].name) + ",";
+        tlt += ofToString(data.timeline.tracks[_track].tlPages[getPage(_track)].tlTracks[i].type) + "]";
+        if(i<num_tracks_on_page-1){
+            tlt += ", ";
+        }
+    }
+    
+    tlt += ")";
     
     verdana9.drawString(tlt, _x+ml, _y+mt);
     
-    //cout << "Timeline tracks in track " << _track << ":  " << data.timeline.tracks[_track].tlTracks.size() << endl;
-    
-    
 }
-
-
 
 //-------------------------------------------------
 int timelinePanel::getTrack(){
@@ -188,12 +198,12 @@ bool timelinePanel::getCuedToPlay(){
 }
 
 //-------------------------------------------------
-void timelinePanel::addtlTrack(int _track){
+void timelinePanel::addtlTrack(string _name, int _type){
     
     timelineData::track newTrack;
-    newTrack.name = "test";
-    newTrack.type = timelineData::trackType(2);
+    newTrack.name = _name;
+    newTrack.type = timelineData::trackType(_type);
     
-    data.timeline.tracks[_track].tlTracks.push_back(newTrack);
+    data.timeline.tracks[getTrack()].tlPages[getPage()].tlTracks.push_back(newTrack);
     
 }

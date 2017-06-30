@@ -34,22 +34,26 @@ void headerUI::draw(){
 
 //EVENTS
 //--------------------------------------------------------------
-void headerUI::onMatrixInputEvent(ofxDatGuiMatrixEvent e){
+void headerUI::onTrackMatrixInputEvent(ofxDatGuiMatrixEvent e){
     
     uiMainApp->setControllerData(e.target->getName(), e.child);
-    add_type = -1;
-    add_name = "";
+    resetTrackDropdown();
+    
+
 }
 
 //--------------------------------------------------------------
 void headerUI::onPageMatrixInputEvent(ofxDatGuiMatrixEvent e){
     
-    
+    uiMainApp->setControllerData(e.target->getName(), e.child);
+    cout << "onPageMatrixInputEvent" << endl;
 }
 
 //--------------------------------------------------------------
 void headerUI::onClipMatrixInputEvent(ofxDatGuiMatrixEvent e){
     
+    uiMainApp->setControllerData(e.target->getName(), e.child);
+    cout << "onClipMatrixInputEvent" << endl;
 }
 
 //--------------------------------------------------------------
@@ -72,11 +76,37 @@ void headerUI::onTextInputEvent(ofxDatGuiTextInputEvent e){
 void headerUI::onButtonEvent(ofxDatGuiButtonEvent e){
     
     if(e.target->getName() == "+"){
-        cout << "add track pressed" << endl;
-        uiMainApp->addTLTrack("STINKBUT", 1);
+        
+        if(add_type > 0){
+            if(add_name == "<<ENTER NAME>>") {
+                cout << "you must enter a name." << endl;
+            } else {
+                uiMainApp->addTLTrack(add_name, add_type);
+                resetTrackDropdown();
+            }
+
+        } else {
+            cout << "you must select a track type." << endl;
+        }
+
         
     } else if (e.target->getName() == "-"){
         cout << "remove track pressed" << endl;
+        
     }
     
 }
+
+//--------------------------------------------------------------
+void headerUI::resetTrackDropdown(){
+    
+    add_name = "<<ENTER NAME>>";
+    add_type = 0;
+    
+    trackDropdown->select(add_type);
+    trackName->setText(add_name);
+    
+    
+}
+
+
