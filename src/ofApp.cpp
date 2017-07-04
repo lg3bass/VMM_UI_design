@@ -54,6 +54,7 @@ void ofApp::draw(){
         //verdana30.drawString(msg, ofGetWidth()/2-bounds.width/2, ofGetHeight()/2-bounds.height/2);
     ofPopStyle();
     
+    setBreadcrumb();
 }
 
 //--------------------------------------------------------------
@@ -66,7 +67,8 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+    
+    timePanel.keyReleased(key);    
 }
 
 //--------------------------------------------------------------
@@ -130,17 +132,36 @@ void ofApp::setControllerData(string name, int data){
     
     if (name == "TRACK") {
 
-        timePanel.setTrack(data);
-        headerPanel.setClip(timePanel.getClip(data));
-        headerPanel.setPage(timePanel.getPage(data));
+        timePanel.data.setTrack(data);
+        headerPanel.setClip(timePanel.data.getClip(data));
+        headerPanel.setPage(timePanel.data.getPage(data));
         
     } else if(name == "PAGES") {
-        timePanel.setPage(data);
+        timePanel.data.setPage(data);
     } else if(name == "CLIP"){
-        timePanel.setClip(data);
+        timePanel.data.setClip(data);
+    }    
+    
+}
+
+//--------------------------------------------------------------
+void ofApp::setBreadcrumb(){
+    
+    string selTrackOnPage = "";
+    
+    if(timePanel.data.getNumOfTimelinesInPage() > 0) {
+        
+        selTrackOnPage = timePanel.data.getSelectedTimelineOnPage(timePanel.data.getSelectedPage());
+        
+    } else {
+        
+        selTrackOnPage = "NULL";
     }
     
+    string breadcrumbMsg = "CLIP " + ofToString(timePanel.data.getClip()+1) + " > PAGE " + ofToString(timePanel.data.getPage()+1) + " > " + ofToString(selTrackOnPage);
 
+    headerPanel.mainUI.breadcrumb->setLabel(breadcrumbMsg);
+    
 }
 
 //--------------------------------------------------------------

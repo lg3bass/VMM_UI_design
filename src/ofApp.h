@@ -60,6 +60,8 @@ class ofApp : public ofBaseApp{
     
     
         void setControllerData(string name, int data);
+        void setBreadcrumb();
+    
         void addTLTrack(string name, int type);
     
     

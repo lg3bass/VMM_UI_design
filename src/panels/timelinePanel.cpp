@@ -50,8 +50,148 @@ void timelinePanel::draw(){
 //-------------------------------------------------
 void timelinePanel::keyPressed(int key){
     
+    if(key & OF_KEY_MODIFIER){
+        if(key >= OF_KEY_F1 && key <= OF_KEY_F12){
 
-    
+            switch(key){
+                case 257:
+                    
+                    //decrement
+                    if(data.getNumOfTimelinesInPage() > 1){
+                        
+                        //TODO -- need to rename the getSelectedPage function.
+                        int selected_page = data.getSelectedPage();
+                        
+                        if(selected_page > 0){
+                            selected_page--;
+                        } else {
+                            selected_page = data.getNumOfTimelinesInPage()-1;
+                        }
+                        data.setSelectedPage(selected_page);
+                        
+                        cout << "F1 pressed - decrement track selection" << endl;
+                        
+                    } else {
+                        
+                        cout << "F1 pressed - not enough timelines on page" << endl;
+                    }
+                    
+                    break;
+                case 258:
+                    
+                    //increment
+                    if(data.getNumOfTimelinesInPage() > 1){
+                        
+                        
+                        int selected_page = data.getSelectedPage();
+                        
+                        if(selected_page < data.getNumOfTimelinesInPage()-1){
+                            selected_page++;
+                        } else {
+                            selected_page = 0;
+                        }
+                        data.setSelectedPage(selected_page);
+                        
+                        cout << "F2 pressed - increment track selection" << endl;
+                    } else {
+                        
+                        cout << "F2 pressed - not enough timelines on page" << endl;
+                    }
+                    
+                    break;
+                case 259:
+                    
+                    cout << "F3 pressed" << endl;
+                    break;
+            
+            }//end switch
+            
+        }else{
+            
+            switch(key){
+                case OF_KEY_LEFT_SUPER:
+                    cout << "Left Apple Pressed" << endl;
+                    
+                    break;
+                case OF_KEY_RIGHT_SUPER:
+                    cout << "Right Apple Pressed" << endl;
+                   
+                    break;
+                case OF_KEY_CONTROL:
+                    cout << "Control Pressed" << endl;
+                    
+                    break;
+                case OF_KEY_RIGHT_ALT:
+                    cout << "Right Alt/Opt Pressed" << endl;
+                                    
+                    break;
+                case OF_KEY_RIGHT_SHIFT:
+                    cout << "Right Shift Pressed" << endl;
+
+                    break;
+                case OF_KEY_LEFT_ALT:
+                    cout << "Left Alt/Opt Pressed" << endl;
+
+                    break;
+                    
+            }//switch
+        }//if-else
+    }//if
+}//func
+
+//-------------------------------------------------
+void timelinePanel::keyReleased(int key){
+    if(key & OF_KEY_MODIFIER){
+        if(key >= OF_KEY_F1 && key <= OF_KEY_F12){
+
+            switch(key){
+                case 257:
+                    //cout << "F1 released" << endl;
+                    
+                    
+                    break;
+                case 258:
+                    //cout << "F2 released" << endl;
+                    
+                    
+                    break;
+                case 259:
+                    
+                    //cout << "F3 released" << endl;
+                    break;
+                    
+            }//end switch
+        }else{
+            
+            switch(key){
+                case OF_KEY_LEFT_SUPER:
+                    cout << "Left Apple Released" << endl;
+                    
+                    break;
+                case OF_KEY_RIGHT_SUPER:
+                    cout << "Right Apple Released" << endl;
+                    
+                    break;
+                case OF_KEY_CONTROL:
+                    cout << "Control Released" << endl;
+                    
+                    break;
+                case OF_KEY_RIGHT_ALT:
+                    cout << "Right Alt/Opt Released" << endl;
+                
+                    break;
+                case OF_KEY_RIGHT_SHIFT:
+                    cout << "Right Shift Released" << endl;
+                    
+                    break;
+                case OF_KEY_LEFT_ALT:
+                    cout << "Left Alt/Opt Released" << endl;
+
+                    break;
+                    
+            }
+        }
+    }
 }
 
 //-------------------------------------------------
@@ -95,8 +235,8 @@ void timelinePanel::drawData(){
     for(int i=0; i<NUMBER_OF_TRACKS;i++){
 
         verdana9.drawString(ofToString(i+1), i*100+ml, _y+mt+v_unit*0);
-        verdana9.drawString(ofToString(getPage(i)+1), i*100+ml, _y+mt+v_unit*1);
-        verdana9.drawString(ofToString(getClip(i)+1), i*100+ml, _y+mt+v_unit*2);
+        verdana9.drawString(ofToString(data.getPage(i)+1), i*100+ml, _y+mt+v_unit*1);
+        verdana9.drawString(ofToString(data.getClip(i)+1), i*100+ml, _y+mt+v_unit*2);
         verdana9.drawString(getCuedToPlay(i) ? "true" : "false", i*100+ml, _y+mt+v_unit*3);
         
         //data.timeline.keyframes.keys.size()
@@ -113,7 +253,7 @@ void timelinePanel::drawData(){
         
     }
 
-    drawTrackData(getTrack());
+    drawTrackData(data.getTrack());
     
 }
 
@@ -126,16 +266,18 @@ void timelinePanel::drawTrackData(int _track){
     float h_unit = 105;
     float v_unit = 15;
     
-    int num_tracks_on_page = data.timeline.tracks[_track].tlPages[getPage(_track)].tlTracks.size();
+    //data.getNumOfTimelines(getPage());
     
-    string tlt = "TRACK " + ofToString(_track+1) + " > PAGE " + ofToString(getPage(_track+1)) + "[" + ofToString(num_tracks_on_page) + "] - " ;
+    int num_tracks_on_page = data.timeline.tracks[_track].tlPages[data.getPage(_track)].tlTracks.size();
+    
+    string tlt = "TRACK " + ofToString(_track+1) + " > PAGE " + ofToString(data.getPage(_track+1)) + "[" + ofToString(num_tracks_on_page) + "] - " ;
     
     tlt += "(";
     
     for(int i=0;i<num_tracks_on_page;i++){
         
-        tlt += "[" + ofToString(data.timeline.tracks[_track].tlPages[getPage(_track)].tlTracks[i].name) + ",";
-        tlt += ofToString(data.timeline.tracks[_track].tlPages[getPage(_track)].tlTracks[i].type) + "]";
+        tlt += "[" + ofToString(data.timeline.tracks[_track].tlPages[data.getPage(_track)].tlTracks[i].name) + ",";
+        tlt += ofToString(data.timeline.tracks[_track].tlPages[data.getPage(_track)].tlTracks[i].type) + "]";
         if(i<num_tracks_on_page-1){
             tlt += ", ";
         }
@@ -148,44 +290,45 @@ void timelinePanel::drawTrackData(int _track){
 }
 
 //-------------------------------------------------
-int timelinePanel::getTrack(){
-    return data.timeline.selected_track;
-}
+//int timelinePanel::getTrack(){
+//    return data.timeline.selected_track;
+//}
 
 //-------------------------------------------------
-void timelinePanel::setTrack(int _track){
-    data.timeline.selected_track = _track;
-}
+//void timelinePanel::setTrack(int _track){
+//    data.timeline.selected_track = _track;
+//    
+//}
 
 //-------------------------------------------------
-int timelinePanel::getClip(int _track){
-    return data.timeline.tracks[_track].selected_clip;
-}
+//int timelinePanel::getClip(int _track){
+//    return data.timeline.tracks[_track].selected_clip;
+//}
 
 //-------------------------------------------------
-int timelinePanel::getClip(){
-    return data.timeline.tracks[getTrack()].selected_clip;
-}
+//int timelinePanel::getClip(){
+//    return data.timeline.tracks[data.getTrack()].selected_clip;
+//}
 
 //-------------------------------------------------
-void timelinePanel::setClip(int _clip){
-    data.timeline.tracks[getTrack()].selected_clip = _clip;
-}
+//void timelinePanel::setClip(int _clip){
+//    data.timeline.tracks[data.getTrack()].selected_clip = _clip;
+//}
 
 //-------------------------------------------------
-int timelinePanel::getPage(int _track){
-    return data.timeline.tracks[_track].selected_page;
-}
+//int timelinePanel::getPage(int _track){
+//    return data.timeline.tracks[_track].selected_page;
+//}
 
 //-------------------------------------------------
-int timelinePanel::getPage(){
-    return data.timeline.tracks[getTrack()].selected_page;
-}
+//int timelinePanel::getPage(){
+//    return data.timeline.tracks[data.getTrack()].selected_page;
+//}
 
 //-------------------------------------------------
-void timelinePanel::setPage(int _page){
-    data.timeline.tracks[getTrack()].selected_page = _page;
-}
+//void timelinePanel::setPage(int _page){
+//    data.timeline.tracks[data.getTrack()].selected_page = _page;
+//}
 
 //-------------------------------------------------
 bool timelinePanel::getCuedToPlay(int _track){
@@ -194,7 +337,7 @@ bool timelinePanel::getCuedToPlay(int _track){
 
 //-------------------------------------------------
 bool timelinePanel::getCuedToPlay(){
-    return data.timeline.tracks[getTrack()].cuedToPlay;
+    return data.timeline.tracks[data.getTrack()].cuedToPlay;
 }
 
 //-------------------------------------------------
@@ -204,6 +347,23 @@ void timelinePanel::addtlTrack(string _name, int _type){
     newTrack.name = _name;
     newTrack.type = timelineData::trackType(_type);
     
-    data.timeline.tracks[getTrack()].tlPages[getPage()].tlTracks.push_back(newTrack);
+    data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].tlTracks.push_back(newTrack);
     
+}
+
+//-------------------------------------------------
+void timelinePanel::setPageTrack(int _tl){
+    data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].selected_track = _tl;
+}
+
+//-------------------------------------------------
+int timelinePanel::getPageTrack(int _track){
+    
+    return data.timeline.tracks[_track].tlPages[data.getPage(_track)].selected_track;
+}
+
+//-------------------------------------------------
+int timelinePanel::getPageTrack(){
+    
+    return data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].selected_track;
 }

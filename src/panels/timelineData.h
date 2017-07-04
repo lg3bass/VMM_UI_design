@@ -9,9 +9,12 @@
 
 #define NUMBER_OF_TRACKS 10
 
+#include "ofMain.h"
+
 class timelineData{
     
 public:
+    
     
     enum trackType {tlCurves,tlKeyframes,tlMarkers};
     
@@ -23,6 +26,7 @@ public:
     struct page {
         string name;
         vector<track> tlTracks;
+        int selected_track;
     };
     
     struct vmmTrack {
@@ -62,35 +66,35 @@ public:
         
     } timeline;
     
-    timelineData(){
-        
-        
-        for(int i = 0;i<NUMBER_OF_TRACKS;i++){              //add blank tracks
-            //add a track
-            vmmTrack mytrack;
-            mytrack.cuedToPlay = false;
-            
-            //add blank pages
-            for(int p = 0;p<10;p++){
-                
-                page myPage;                                //add pages
-                myPage.name = "PAGE_"+ofToString(p);
-                mytrack.tlPages.push_back(myPage);
+    
+    //constuctor
+    timelineData();
+    
+    //TODO - move all the data functions within.
+    
+    int getTrack();
+    void setTrack(int _track);
+    
+    int getClip(int _track);
+    int getClip();
+    void setClip(int _clip);
+    
+    int getPage(int _track);
+    int getPage();
+    void setPage(int _page);
+    
+    int getSelectedPage();
+    void setSelectedPage(int _page);
+    string getSelectedTimelineOnPage(int _pageIndex);
+    
+    
+    int getNumOfTimelinesInPage();
+    
+    
+    
+    
 
-            }
-            
-            //add test keys
-            for(int k=0;k<3;k++){
-                key kf;
-                kf.frm = k*15;
-                kf.val = 0;
-                timeline.keyframes.keys.push_back(kf);
-            }
-            
-            
-            timeline.tracks.push_back(mytrack);
-            
-        }
-    }
+    
+
     
 };

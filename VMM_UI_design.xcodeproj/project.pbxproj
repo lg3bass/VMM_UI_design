@@ -13,6 +13,7 @@
 		9CF4130A7E6DA19A3DC42B9A /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C954E0E8B7DB9D6983309883 /* ofxSmartFont.cpp */; };
 		B00A0E809ACC594F9EA51A4E /* FooterPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39892A51AF00F6CCD6762A45 /* FooterPanel.cpp */; };
 		BF5006A51EF8B51C00488519 /* headerUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF5006A31EF8B51C00488519 /* headerUI.cpp */; };
+		BFCA289B1F0940D60093DC49 /* timelineData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFCA289A1F0940D60093DC49 /* timelineData.cpp */; };
 		C9466C434D1CF8AB968D298D /* ofxDatGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26490D7CC31EF7D6ED5F925A /* ofxDatGui.cpp */; };
 		D3C1C48E59CAA2D68C0DD477 /* ofxDatGuiComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3E3B8F332A1A3C7EDF4998 /* ofxDatGuiComponent.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -76,6 +77,7 @@
 		BF1B3C901EEC20B800D004F5 /* ofxDatGuiThemesVMM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxDatGuiThemesVMM.h; path = themes/ofxDatGuiThemesVMM.h; sourceTree = "<group>"; };
 		BF5006A31EF8B51C00488519 /* headerUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = headerUI.cpp; path = panels/headerUI.cpp; sourceTree = "<group>"; };
 		BF5006A41EF8B51C00488519 /* headerUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = headerUI.h; path = panels/headerUI.h; sourceTree = "<group>"; };
+		BFCA289A1F0940D60093DC49 /* timelineData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = timelineData.cpp; path = panels/timelineData.cpp; sourceTree = "<group>"; };
 		C085A33340AB0C1DB647AC2F /* ofxDatGuiTextInput.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiTextInput.h; path = ../../../addons/ofxDatGui/src/components/ofxDatGuiTextInput.h; sourceTree = SOURCE_ROOT; };
 		C84ED7FCC017328C6F58283D /* ofxDatGuiColorPicker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiColorPicker.h; path = ../../../addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h; sourceTree = SOURCE_ROOT; };
 		C954E0E8B7DB9D6983309883 /* ofxSmartFont.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSmartFont.cpp; path = ../../../addons/ofxDatGui/src/libs/ofxSmartFont/ofxSmartFont.cpp; sourceTree = SOURCE_ROOT; };
@@ -121,15 +123,16 @@
 			isa = PBXGroup;
 			children = (
 				7E8F78891EFC9FBC00473B50 /* timelineData.h */,
-				FB5263E9621084D2D19B61BA /* timelinePanel.cpp */,
+				BFCA289A1F0940D60093DC49 /* timelineData.cpp */,
 				EA98BBC6FAFEC7657B669EE1 /* timelinePanel.h */,
-				39892A51AF00F6CCD6762A45 /* FooterPanel.cpp */,
+				FB5263E9621084D2D19B61BA /* timelinePanel.cpp */,
 				36F6BD4C8B1E34D907FD476B /* FooterPanel.h */,
+				39892A51AF00F6CCD6762A45 /* FooterPanel.cpp */,
+				BF5006A41EF8B51C00488519 /* headerUI.h */,
 				7E52B2851EFC67A400207E0D /* headerUIsetup.cpp */,
 				BF5006A31EF8B51C00488519 /* headerUI.cpp */,
-				BF5006A41EF8B51C00488519 /* headerUI.h */,
-				81CC239F720478C794B23B21 /* HeaderPanel.cpp */,
 				BE61923C920EEC56683EA564 /* HeaderPanel.h */,
+				81CC239F720478C794B23B21 /* HeaderPanel.cpp */,
 				83C8EAF5BA8DE01BC1292354 /* Panel.h */,
 			);
 			name = panels;
@@ -367,6 +370,7 @@
 				D3C1C48E59CAA2D68C0DD477 /* ofxDatGuiComponent.cpp in Sources */,
 				9CF4130A7E6DA19A3DC42B9A /* ofxSmartFont.cpp in Sources */,
 				C9466C434D1CF8AB968D298D /* ofxDatGui.cpp in Sources */,
+				BFCA289B1F0940D60093DC49 /* timelineData.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
