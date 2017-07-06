@@ -57,17 +57,17 @@ void timelinePanel::keyPressed(int key){
                 case 257:
                     
                     //decrement
-                    if(data.getNumOfTimelinesInPage() > 1){
+                    if(data.getNumOfChannelsOnPage() > 1){
                         
-                        //TODO -- need to rename the getSelectedPage function.
-                        int selected_page = data.getSelectedPage();
+                        
+                        int selected_page = data.getSelectedChannel();
                         
                         if(selected_page > 0){
                             selected_page--;
                         } else {
-                            selected_page = data.getNumOfTimelinesInPage()-1;
+                            selected_page = data.getNumOfChannelsOnPage()-1;
                         }
-                        data.setSelectedPage(selected_page);
+                        data.setSelectedChannel(selected_page);
                         
                         cout << "F1 pressed - decrement track selection" << endl;
                         
@@ -80,17 +80,17 @@ void timelinePanel::keyPressed(int key){
                 case 258:
                     
                     //increment
-                    if(data.getNumOfTimelinesInPage() > 1){
+                    if(data.getNumOfChannelsOnPage() > 1){
                         
                         
-                        int selected_page = data.getSelectedPage();
+                        int selected_page = data.getSelectedChannel();
                         
-                        if(selected_page < data.getNumOfTimelinesInPage()-1){
+                        if(selected_page < data.getNumOfChannelsOnPage()-1){
                             selected_page++;
                         } else {
                             selected_page = 0;
                         }
-                        data.setSelectedPage(selected_page);
+                        data.setSelectedChannel(selected_page);
                         
                         cout << "F2 pressed - increment track selection" << endl;
                     } else {
@@ -239,14 +239,14 @@ void timelinePanel::drawData(){
         verdana9.drawString(ofToString(data.getClip(i)+1), i*100+ml, _y+mt+v_unit*2);
         verdana9.drawString(data.getCuedToPlay(i) ? "true" : "false", i*100+ml, _y+mt+v_unit*3);
         
-        //data.timeline.keyframes.keys.size()
+
         
         
         string ky;
         for(int k=0; k<3;k++){
             
             
-            ky += "["+ofToString(data.timeline.keyframes.keys[k].frm)+","+ofToString(data.timeline.keyframes.keys[k].val)+"],";
+            ky += "["+ofToString(data.TL.keyframes.keys[k].frm)+","+ofToString(data.TL.keyframes.keys[k].val)+"],";
             
         }
         verdana9.drawString(ky, i*100+ml, _y+mt+v_unit*4);
@@ -266,9 +266,7 @@ void timelinePanel::drawTrackData(int _track){
     float h_unit = 105;
     float v_unit = 15;
     
-    //data.getNumOfTimelines(getPage());
-    
-    int num_tracks_on_page = data.timeline.tracks[_track].tlPages[data.getPage(_track)].tlTracks.size();
+    int num_tracks_on_page = data.TL.tracks[_track].tlPages[data.getPage(_track)].tlChannels.size();
     
     string tlt = "TRACK " + ofToString(_track+1) + " > PAGE " + ofToString(data.getPage(_track+1)) + "[" + ofToString(num_tracks_on_page) + "] - " ;
     
@@ -276,8 +274,8 @@ void timelinePanel::drawTrackData(int _track){
     
     for(int i=0;i<num_tracks_on_page;i++){
         
-        tlt += "[" + ofToString(data.timeline.tracks[_track].tlPages[data.getPage(_track)].tlTracks[i].name) + ",";
-        tlt += ofToString(data.timeline.tracks[_track].tlPages[data.getPage(_track)].tlTracks[i].type) + "]";
+        tlt += "[" + ofToString(data.TL.tracks[_track].tlPages[data.getPage(_track)].tlChannels[i].name) + ",";
+        tlt += ofToString(data.TL.tracks[_track].tlPages[data.getPage(_track)].tlChannels[i].type) + "]";
         if(i<num_tracks_on_page-1){
             tlt += ", ";
         }
@@ -289,89 +287,3 @@ void timelinePanel::drawTrackData(int _track){
     
 }
 
-//-------------------------------------------------
-//int timelinePanel::getTrack(){
-//    return data.timeline.selected_track;
-//}
-
-//-------------------------------------------------
-//void timelinePanel::setTrack(int _track){
-//    data.timeline.selected_track = _track;
-//    
-//}
-
-//-------------------------------------------------
-//int timelinePanel::getClip(int _track){
-//    return data.timeline.tracks[_track].selected_clip;
-//}
-
-//-------------------------------------------------
-//int timelinePanel::getClip(){
-//    return data.timeline.tracks[data.getTrack()].selected_clip;
-//}
-
-//-------------------------------------------------
-//void timelinePanel::setClip(int _clip){
-//    data.timeline.tracks[data.getTrack()].selected_clip = _clip;
-//}
-
-//-------------------------------------------------
-//int timelinePanel::getPage(int _track){
-//    return data.timeline.tracks[_track].selected_page;
-//}
-
-//-------------------------------------------------
-//int timelinePanel::getPage(){
-//    return data.timeline.tracks[data.getTrack()].selected_page;
-//}
-
-//-------------------------------------------------
-//void timelinePanel::setPage(int _page){
-//    data.timeline.tracks[data.getTrack()].selected_page = _page;
-//}
-
-//-------------------------------------------------
-//bool timelinePanel::getCuedToPlay(int _track){
-//    return data.timeline.tracks[_track].cuedToPlay;
-//}
-
-//-------------------------------------------------
-//bool timelinePanel::getCuedToPlay(){
-//    return data.timeline.tracks[data.getTrack()].cuedToPlay;
-//}
-
-//-------------------------------------------------
-//void timelinePanel::addtlTrack(string _name, int _type){
-//    
-//    timelineData::track newTrack;
-//    newTrack.name = _name;
-//    newTrack.type = timelineData::trackType(_type);
-//    
-//    data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].tlTracks.push_back(newTrack);
-//    
-//}
-
-//-------------------------------------------------
-//void timelinePanel::remtlTrack(){
-//    
-//    data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].selected_track = 0;
-//    data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].tlTracks.pop_back();
-//    
-//}
-
-//-------------------------------------------------
-void timelinePanel::setPageTrack(int _tl){
-    data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].selected_tlTrack = _tl;
-}
-
-//-------------------------------------------------
-int timelinePanel::getPageTrack(int _track){
-    
-    return data.timeline.tracks[_track].tlPages[data.getPage(_track)].selected_tlTrack;
-}
-
-//-------------------------------------------------
-int timelinePanel::getPageTrack(){
-    
-    return data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].selected_tlTrack;
-}

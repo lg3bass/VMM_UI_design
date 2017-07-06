@@ -25,8 +25,8 @@ public:
     
     struct page {
         string name;
-        vector<channel> tlTracks;
-        int selected_tlTrack;
+        vector<channel> tlChannels;
+        int selected_channel;
     };
     
     struct vmmTrack {
@@ -64,13 +64,10 @@ public:
             float clampH = 100.0;
         } keyframes;
         
-    } timeline;                                     //change to TL
-    
+    } TL;                                           //change to TL
     
     //constuctor
     timelineData();
-    
-    //TODO - move all the data functions within.
     
     int getTrack();                                 //return the current selected track
     void setTrack(int _track);                      //set current track
@@ -91,22 +88,10 @@ public:
     void addtlTrack(string _name, int _type);       //add a timeline track to a page
     void remtlTrack();                              //remove a timeline from the current page.
     
-    //wtf does this do.
-    void setPageTrack(int _tl);
-    int getPageTrack(int _track);
-    int getPageTrack();
-    
-    int getSelectedPage();                          //change to getTlTrackOnPage();
-    void setSelectedPage(int _page);
-    string getSelectedTimelineOnPage(int _pageIndex);
-    
-    
-    int getNumOfTimelinesInPage();
-    
-    
-    
-    
-
+    int getSelectedChannel();                       //returns the index to the selected timeline on a page.
+    void setSelectedChannel(int _page);             //set the current selected timeline(channel) on a page.
+    string getSelectedChannelName(int _pageIndex);  //return the name of the selected timeline/channel on a page.
+    int getNumOfChannelsOnPage();                   //return the number of channels on a page.
     
 
     

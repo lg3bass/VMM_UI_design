@@ -149,9 +149,9 @@ void ofApp::setBreadcrumb(){
     
     string selTrackOnPage = "";
     
-    if(timePanel.data.getNumOfTimelinesInPage() > 0) {
+    if(timePanel.data.getNumOfChannelsOnPage() > 0) {
         
-        selTrackOnPage = timePanel.data.getSelectedTimelineOnPage(timePanel.data.getSelectedPage());
+        selTrackOnPage = timePanel.data.getSelectedChannelName(timePanel.data.getSelectedChannel());
         
     } else {
         
@@ -174,7 +174,7 @@ void ofApp::addTLTrack(string name, int type){
 //--------------------------------------------------------------
 void ofApp::remTLTrack(){
     
-    if(timePanel.data.getNumOfTimelinesInPage()> 0){
+    if(timePanel.data.getNumOfChannelsOnPage()> 0){
         
         timePanel.data.remtlTrack();
         
