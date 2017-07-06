@@ -237,7 +237,7 @@ void timelinePanel::drawData(){
         verdana9.drawString(ofToString(i+1), i*100+ml, _y+mt+v_unit*0);
         verdana9.drawString(ofToString(data.getPage(i)+1), i*100+ml, _y+mt+v_unit*1);
         verdana9.drawString(ofToString(data.getClip(i)+1), i*100+ml, _y+mt+v_unit*2);
-        verdana9.drawString(getCuedToPlay(i) ? "true" : "false", i*100+ml, _y+mt+v_unit*3);
+        verdana9.drawString(data.getCuedToPlay(i) ? "true" : "false", i*100+ml, _y+mt+v_unit*3);
         
         //data.timeline.keyframes.keys.size()
         
@@ -331,39 +331,47 @@ void timelinePanel::drawTrackData(int _track){
 //}
 
 //-------------------------------------------------
-bool timelinePanel::getCuedToPlay(int _track){
-    return data.timeline.tracks[_track].cuedToPlay;
-}
+//bool timelinePanel::getCuedToPlay(int _track){
+//    return data.timeline.tracks[_track].cuedToPlay;
+//}
 
 //-------------------------------------------------
-bool timelinePanel::getCuedToPlay(){
-    return data.timeline.tracks[data.getTrack()].cuedToPlay;
-}
+//bool timelinePanel::getCuedToPlay(){
+//    return data.timeline.tracks[data.getTrack()].cuedToPlay;
+//}
 
 //-------------------------------------------------
-void timelinePanel::addtlTrack(string _name, int _type){
-    
-    timelineData::track newTrack;
-    newTrack.name = _name;
-    newTrack.type = timelineData::trackType(_type);
-    
-    data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].tlTracks.push_back(newTrack);
-    
-}
+//void timelinePanel::addtlTrack(string _name, int _type){
+//    
+//    timelineData::track newTrack;
+//    newTrack.name = _name;
+//    newTrack.type = timelineData::trackType(_type);
+//    
+//    data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].tlTracks.push_back(newTrack);
+//    
+//}
+
+//-------------------------------------------------
+//void timelinePanel::remtlTrack(){
+//    
+//    data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].selected_track = 0;
+//    data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].tlTracks.pop_back();
+//    
+//}
 
 //-------------------------------------------------
 void timelinePanel::setPageTrack(int _tl){
-    data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].selected_track = _tl;
+    data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].selected_tlTrack = _tl;
 }
 
 //-------------------------------------------------
 int timelinePanel::getPageTrack(int _track){
     
-    return data.timeline.tracks[_track].tlPages[data.getPage(_track)].selected_track;
+    return data.timeline.tracks[_track].tlPages[data.getPage(_track)].selected_tlTrack;
 }
 
 //-------------------------------------------------
 int timelinePanel::getPageTrack(){
     
-    return data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].selected_track;
+    return data.timeline.tracks[data.getTrack()].tlPages[data.getPage()].selected_tlTrack;
 }

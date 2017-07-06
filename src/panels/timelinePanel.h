@@ -49,13 +49,14 @@ public:
     //int getPage();
     //void setPage(int _page);
     
-    bool getCuedToPlay(int _track);
-    bool getCuedToPlay();
-    void setCuedToPlay(int _track);
+    //bool getCuedToPlay(int _track);
+    //bool getCuedToPlay();
+    //void setCuedToPlay(int _track);
     
-    void addtlTrack(string _name, int _type);
+    //void addtlTrack(string _name, int _type);
+    //void remtlTrack();
     
-    void setPageTrack(int _tl);
+    void setPageTrack(int _tl);             //sets the timeline on the Page.
     int getPageTrack(int _track);
     int getPageTrack();
     

@@ -167,8 +167,18 @@ void ofApp::setBreadcrumb(){
 //--------------------------------------------------------------
 void ofApp::addTLTrack(string name, int type){
     
-    timePanel.addtlTrack(name, type);
+    timePanel.data.addtlTrack(name, type);
     
+}
+
+//--------------------------------------------------------------
+void ofApp::remTLTrack(){
+    
+    if(timePanel.data.getNumOfTimelinesInPage()> 0){
+        
+        timePanel.data.remtlTrack();
+        
+    }
 }
 
 //--------------------------------------------------------------

@@ -16,17 +16,17 @@ class timelineData{
 public:
     
     
-    enum trackType {tlCurves,tlKeyframes,tlMarkers};
+    enum channelType {tlCurves,tlKeyframes,tlMarkers};
     
-    struct track {
+    struct channel {
         string name;
-        trackType type;
+        channelType type;
     };
     
     struct page {
         string name;
-        vector<track> tlTracks;
-        int selected_track;
+        vector<channel> tlTracks;
+        int selected_tlTrack;
     };
     
     struct vmmTrack {
@@ -64,7 +64,7 @@ public:
             float clampH = 100.0;
         } keyframes;
         
-    } timeline;
+    } timeline;                                     //change to TL
     
     
     //constuctor
@@ -72,18 +72,31 @@ public:
     
     //TODO - move all the data functions within.
     
-    int getTrack();
-    void setTrack(int _track);
+    int getTrack();                                 //return the current selected track
+    void setTrack(int _track);                      //set current track
     
-    int getClip(int _track);
-    int getClip();
-    void setClip(int _clip);
+    int getClip(int _track);                        //return the current selected clip for a specific track
+    int getClip();                                  //return the current selected clip on current track
+    void setClip(int _clip);                        //set current clip on current track
     
-    int getPage(int _track);
-    int getPage();
-    void setPage(int _page);
+    int getPage(int _track);                        //return the current selected page for a specific track
+    int getPage();                                  //return the current selected page on current track
+    void setPage(int _page);                        //set the current page on current track
     
-    int getSelectedPage();
+    bool getCuedToPlay(int _track);                 //return the flag if to play ALL the timelines on a page for a specific track
+    bool getCuedToPlay();                           //return the flag if to play ALL the timelines on a page for current track
+    void setCuedToPlay(int _track);                 //set flag to play ALL the timelines on a page for a specific track
+    
+    //ADD AND REMOVE TIMELINES TO A PAGE
+    void addtlTrack(string _name, int _type);       //add a timeline track to a page
+    void remtlTrack();                              //remove a timeline from the current page.
+    
+    //wtf does this do.
+    void setPageTrack(int _tl);
+    int getPageTrack(int _track);
+    int getPageTrack();
+    
+    int getSelectedPage();                          //change to getTlTrackOnPage();
     void setSelectedPage(int _page);
     string getSelectedTimelineOnPage(int _pageIndex);
     

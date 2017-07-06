@@ -20,7 +20,7 @@ timelineData::timelineData(){
             
             page myPage;                                //add pages
             myPage.name = "PAGE_"+ofToString(p);
-            myPage.selected_track = 0;
+            myPage.selected_tlTrack = 0;
             
             mytrack.tlPages.push_back(myPage);
             
@@ -83,13 +83,45 @@ void timelineData::setPage(int _page){
 }
 
 //-------------------------------------------------
+bool timelineData::getCuedToPlay(int _track){
+    return timeline.tracks[_track].cuedToPlay;
+}
+
+//-------------------------------------------------
+bool timelineData::getCuedToPlay(){
+    return timeline.tracks[getTrack()].cuedToPlay;
+}
+
+//-------------------------------------------------
+void timelineData::addtlTrack(string _name, int _type){
+    
+    channel newTrack;
+    newTrack.name = _name;
+    newTrack.type = channelType(_type);
+    
+    timeline.tracks[getTrack()].tlPages[getPage()].tlTracks.push_back(newTrack);
+    
+}
+
+//-------------------------------------------------
+void timelineData::remtlTrack(){
+    //note: currently this removes the current selected timeline and then selects index 0.
+    int currentTrackOnPage = timeline.tracks[getTrack()].tlPages[getPage()].selected_tlTrack;
+    
+    //erase at index. (source: //stackoverflow.com/questions/875103/how-do-i-erase-an-element-from-stdvector-by-index)
+    timeline.tracks[getTrack()].tlPages[getPage()].tlTracks.erase(timeline.tracks[getTrack()].tlPages[getPage()].tlTracks.begin()+currentTrackOnPage);
+    timeline.tracks[getTrack()].tlPages[getPage()].selected_tlTrack = 0;  //set selected to 0;
+}
+
+//TODO - change these functions getSelectedPage, setSelectedPage
+//-------------------------------------------------
 int timelineData::getSelectedPage(){
-    return timeline.tracks[getTrack()].tlPages[getPage()].selected_track;
+    return timeline.tracks[getTrack()].tlPages[getPage()].selected_tlTrack;
 }
 
 //-------------------------------------------------
 void timelineData::setSelectedPage(int _page){    
-    timeline.tracks[getTrack()].tlPages[getPage()].selected_track = _page;
+    timeline.tracks[getTrack()].tlPages[getPage()].selected_tlTrack = _page;
     
     
     ofLog() << "Selected - Page " << ofToString(getPage()) << " Timeline " << getSelectedTimelineOnPage(_page);

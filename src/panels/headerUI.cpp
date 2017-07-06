@@ -87,11 +87,17 @@ void headerUI::onButtonEvent(ofxDatGuiButtonEvent e){
 
         } else {
             cout << "you must select a track type." << endl;
+            
+            
+            
+            
         }
 
         
     } else if (e.target->getName() == "-"){
         cout << "remove track pressed" << endl;
+        
+        uiMainApp->remTLTrack();
         
     }
     
