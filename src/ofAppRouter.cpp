@@ -54,3 +54,19 @@ void ofApp::remTLTrack(){
         
     }
 }
+
+//--------------------------------------------------------------
+void ofApp::nextKey(){
+    timePanel.data.setNextKey();
+}
+
+//--------------------------------------------------------------
+void ofApp::prevKey(){
+    timePanel.data.setPrevKey();
+}
+
+//--------------------------------------------------------------
+void ofApp::setKeyVal(int _val){
+    timePanel.data.setSelectedKeyValue(_val);
+    
+}

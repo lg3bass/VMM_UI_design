@@ -103,15 +103,16 @@ void headerUI::setupGUI() {
     selNext->setBorder(ofColor::darkGrey, 1);
     selNext->onButtonEvent(this, &headerUI::onButtonEvent);
     
-    keyVal = new ofxDatGuiTextInput("", "45.0");
+    keyVal = new ofxDatGuiTextInput("KEY", "45.0");
     keyVal->setTheme(new ofxDatGuiThemeVMM);
     keyVal->setWidth(50,0.0);
     keyVal->setHeight(rowH);
     keyVal->setPosition(S2.x+selKey->getWidth()+selPrev->getWidth()+selNext->getWidth(), rowH*1);
     keyVal->setLabelMargin(0);
-    keyVal->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    keyVal->setLabelAlignment(ofxDatGuiAlignment::LEFT);
     keyVal->setBorderVisible(TRUE);
     keyVal->setBorder(ofColor::darkGrey, 1);
+    keyVal->onTextInputEvent(this, &headerUI::onTextInputEvent);
     
     clamp = new ofxDatGuiButton("CLAMP");
     clamp->setTheme(new ofxDatGuiThemeVMM);
@@ -275,13 +276,13 @@ void headerUI::setupGUI() {
     
 
     
-    trackName = new ofxDatGuiTextInput("", "<<ENTER NAME>>");
+    trackName = new ofxDatGuiTextInput("NAME", "<<ENTER NAME>>");
     trackName->setTheme(new ofxDatGuiThemeVMM);
     trackName->setWidth(150,0.0);
     trackName->setHeight(rowH);
     trackName->setPosition(S3.x+addTr->getWidth()+remTr->getWidth()+trackDropdown->getWidth(), rowH*2);
     trackName->setLabelMargin(0);
-    trackName->setLabelAlignment(ofxDatGuiAlignment::CENTER);
+    trackName->setLabelAlignment(ofxDatGuiAlignment::LEFT);
     trackName->setBorderVisible(TRUE);
     trackName->setBorder(ofColor::darkGrey, 1);
     trackName->onTextInputEvent(this, &headerUI::onTextInputEvent);

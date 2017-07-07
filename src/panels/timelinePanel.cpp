@@ -301,19 +301,22 @@ void timelinePanel::drawPageData(){
     
     if (data.getNumOfChannelsOnPage() > 0){
         
-        int keysInChannel = data.TL.tracks[data.getTrack()].tlPages[data.getPage()].tlChannels[data.getSelectedChannel()].keyframes.keys.size();
-        int selectedKeyIndex = data.TL.tracks[data.getTrack()].tlPages[data.getPage()].tlChannels[data.getSelectedChannel()].keyframes.selected_key;
+        //int keysInChannel = data.TL.tracks[data.getTrack()].tlPages[data.getPage()].tlChannels[data.getSelectedChannel()].keyframes.keys.size();
+        //int selectedKeyIndex = data.TL.tracks[data.getTrack()].tlPages[data.getPage()].tlChannels[data.getSelectedChannel()].selected_key;
+        
+        int keysInChannel = data.getNumOfKeysInChannel();
+        int selectedKeyIndex = data.getSelectedKeyIndex();
         
         for(int j=0; j< keysInChannel;j++){
             
-            keyframeTxt += "(" + ofToString(data.getSelectedKey(j).x) + ":" + ofToString(data.getSelectedKey(j).y) + ")";
+            keyframeTxt += "(" + ofToString(data.getSelectedKeyValue(j).x) + ":" + ofToString(data.getSelectedKeyValue(j).y) + ")";
             
             if(j<keysInChannel-1){
                 keyframeTxt += ", ";
             }
         }
 
-        selKeyTxt += "(" + ofToString(data.getSelectedKey(selectedKeyIndex).x) + ":" + ofToString(data.getSelectedKey(selectedKeyIndex).y) + ")";
+        selKeyTxt += ofToString(data.getSelectedKeyIndex()) + " - (" + ofToString(data.getSelectedKeyValue(selectedKeyIndex).x) + ":" + ofToString(data.getSelectedKeyValue(selectedKeyIndex).y) + ")";
         
         
     }

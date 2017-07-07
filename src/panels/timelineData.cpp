@@ -143,8 +143,6 @@ string timelineData::getSelectedChannelName(int _pageIndex){
 //-------------------------------------------------
 int timelineData::getNumOfChannelsOnPage(){
     
-    int currentTrack = TL.selected_track;
-    
     int num_tracks_on_page = TL.tracks[getTrack()].tlPages[getPage()].tlChannels.size();
         
     return num_tracks_on_page;
@@ -152,7 +150,13 @@ int timelineData::getNumOfChannelsOnPage(){
 }
 
 //-------------------------------------------------
-ofVec2f timelineData::getSelectedKey(int _selKey){
+int timelineData::getNumOfKeysInChannel(){
+    return TL.tracks[getTrack()].tlPages[getPage()].tlChannels[getSelectedChannel()].keyframes.keys.size();
+}
+
+
+//-------------------------------------------------
+ofVec2f timelineData::getSelectedKeyValue(int _selKey){
     
     int kf = TL.tracks[getTrack()].tlPages[getPage()].tlChannels[getSelectedChannel()].keyframes.keys[_selKey].frm;
     float kv = TL.tracks[getTrack()].tlPages[getPage()].tlChannels[getSelectedChannel()].keyframes.keys[_selKey].val;
@@ -160,4 +164,62 @@ ofVec2f timelineData::getSelectedKey(int _selKey){
     ofVec2f key = ofVec2f(kf,kv);
     
     return key;
+}
+
+//-------------------------------------------------
+int timelineData::getSelectedKeyIndex(){
+    
+    return TL.tracks[getTrack()].tlPages[getPage()].tlChannels[getSelectedChannel()].selected_key;
+    
+}
+
+//-------------------------------------------------
+void timelineData::setSelectedKeyIndex(int _index){
+    TL.tracks[getTrack()].tlPages[getPage()].tlChannels[getSelectedChannel()].selected_key = _index;
+}
+
+//-------------------------------------------------
+void timelineData::setNextKey(){
+    
+    if(getNumOfChannelsOnPage()>0){
+        int k = getSelectedKeyIndex();
+        
+        if(k < getNumOfKeysInChannel()-1){
+            k++;
+            
+        } else {
+            k = 0;
+        }
+       
+        setSelectedKeyIndex(k);
+    }
+    
+}
+
+//-------------------------------------------------
+void timelineData::setPrevKey(){
+    cout << "setPrevKey()";
+    if(getNumOfChannelsOnPage()>0){
+        int k = getSelectedKeyIndex();
+        
+        if(k == 0){
+            k = getNumOfKeysInChannel()-1;
+            
+        } else {
+            k--;
+        }
+        
+        setSelectedKeyIndex(k);
+        
+    }
+    
+}
+
+//-------------------------------------------------
+void timelineData::setSelectedKeyValue(int _val){
+    cout << "setSelectedKeyValue" << endl;
+    
+    TL.tracks[getTrack()].tlPages[getPage()].tlChannels[getSelectedChannel()].keyframes.keys[getSelectedKeyIndex()].val = _val;
+    
+    
 }

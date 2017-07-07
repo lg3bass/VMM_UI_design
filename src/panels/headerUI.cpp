@@ -67,8 +67,24 @@ void headerUI::onDDInputEvent(ofxDatGuiDropdownEvent e){
 //--------------------------------------------------------------
 void headerUI::onTextInputEvent(ofxDatGuiTextInputEvent e){
     
-    cout << "text: " << e.text << endl;
-    add_name = e.text;
+    cout << e.target->getName() << " text: " << e.text << endl;
+    
+    if(e.target->getName()== "NAME"){
+
+        add_name = e.text;
+        
+    } else if (e.target->getName() == "KEY"){
+        
+        //cout << "set the value of the key!" << endl;
+        uiMainApp->setKeyVal(ofToInt(e.text));
+        
+                            
+                            
+        
+    }
+    
+    
+    
     
 }
 
@@ -95,11 +111,11 @@ void headerUI::onButtonEvent(ofxDatGuiButtonEvent e){
         
     } else if (e.target->getName() == ">"){
         cout << "increment key" << endl;
-        
+        uiMainApp->nextKey();
         
     } else if (e.target->getName() == "<"){
         cout << "decrement key" << endl;
-        
+        uiMainApp->prevKey();
         
     }
     

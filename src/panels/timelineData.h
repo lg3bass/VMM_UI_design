@@ -96,6 +96,12 @@ public:
     string getSelectedChannelName(int _pageIndex);  //return the name of the selected timeline/channel on a page.
     int getNumOfChannelsOnPage();                   //return the number of channels on a page.
     
-    ofVec2f getSelectedKey(int _selKey);                       //return the selected keyframe in vec2f format
+    int getNumOfKeysInChannel();                    
+    ofVec2f getSelectedKeyValue(int _selKey);       //return the selected keyframe in vec2f format
+    int getSelectedKeyIndex();
+    void setSelectedKeyIndex(int _index);
+    void setNextKey();
+    void setPrevKey();
+    void setSelectedKeyValue(int _value);
     
 };

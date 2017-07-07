@@ -46,6 +46,10 @@ class ofApp : public ofBaseApp{
         void setBreadcrumb();
         void addTLTrack(string name, int type);
         void remTLTrack();
+        
+        void nextKey();
+        void prevKey();
+        void setKeyVal(int _val);
     
 
     
