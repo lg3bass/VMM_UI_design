@@ -76,7 +76,6 @@ void headerUI::onTextInputEvent(ofxDatGuiTextInputEvent e){
 void headerUI::onButtonEvent(ofxDatGuiButtonEvent e){
     
     if(e.target->getName() == "+"){
-        
         if(add_type > 0){
             if(add_name == "<<ENTER NAME>>") {
                 cout << "you must enter a name." << endl;
@@ -88,16 +87,19 @@ void headerUI::onButtonEvent(ofxDatGuiButtonEvent e){
         } else {
             cout << "you must select a track type." << endl;
             
-            
-            
-            
         }
-
-        
     } else if (e.target->getName() == "-"){
         cout << "remove track pressed" << endl;
         
         uiMainApp->remTLTrack();
+        
+    } else if (e.target->getName() == ">"){
+        cout << "increment key" << endl;
+        
+        
+    } else if (e.target->getName() == "<"){
+        cout << "decrement key" << endl;
+        
         
     }
     

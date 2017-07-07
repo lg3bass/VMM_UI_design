@@ -17,10 +17,22 @@ public:
     
     
     enum channelType {tlCurves,tlKeyframes,tlMarkers};
+
+    struct key {
+        int frm;
+        float val;
+    };
     
     struct channel {
         string name;
         channelType type;
+        int selected_key;
+        struct keys{
+            vector<key> keys;
+            int selected_key;
+            float clampValL = 0.0;
+            float clampValH = 100.0;
+        } keyframes;
     };
     
     struct page {
@@ -36,10 +48,7 @@ public:
         bool cuedToPlay;
     };
 
-    struct key {
-        int frm;
-        float val;
-    };
+
     
     struct tlData {
         int selected_track = 0;
@@ -57,12 +66,6 @@ public:
         bool snap = false;
         bool drive = false;
         bool osc = false;
-        struct keys{
-            vector<key> keys;
-            int selected_key;
-            float clampL = 0.0;
-            float clampH = 100.0;
-        } keyframes;
         
     } TL;                                           //change to TL
     
@@ -93,6 +96,6 @@ public:
     string getSelectedChannelName(int _pageIndex);  //return the name of the selected timeline/channel on a page.
     int getNumOfChannelsOnPage();                   //return the number of channels on a page.
     
-
+    ofVec2f getSelectedKey(int _selKey);                       //return the selected keyframe in vec2f format
     
 };

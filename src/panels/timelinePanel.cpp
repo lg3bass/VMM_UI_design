@@ -43,7 +43,7 @@ void timelinePanel::draw(){
     
     drawPanel();
     
-    drawData();
+    drawTrackData();
     
 }
 
@@ -216,7 +216,7 @@ void timelinePanel::mouseReleased(int x, int y, int button){
 }
 
 //-------------------------------------------------
-void timelinePanel::drawData(){
+void timelinePanel::drawTrackData(){
 
     float ml = 60;
     float mt = 80;
@@ -242,23 +242,23 @@ void timelinePanel::drawData(){
 
         
         
-        string ky;
-        for(int k=0; k<3;k++){
-            
-            
-            ky += "["+ofToString(data.TL.keyframes.keys[k].frm)+","+ofToString(data.TL.keyframes.keys[k].val)+"],";
-            
-        }
-        verdana9.drawString(ky, i*100+ml, _y+mt+v_unit*4);
+//        string ky;
+//        for(int k=0; k<3;k++){
+//            
+//            
+//            ky += "["+ofToString(data.TL.keyframes.keys[k].frm)+","+ofToString(data.TL.keyframes.keys[k].val)+"],";
+//            
+//        }
+//        verdana9.drawString(ky, i*100+ml, _y+mt+v_unit*4);
         
     }
 
-    drawTrackData(data.getTrack());
+    drawPageData();
     
 }
 
 //-------------------------------------------------
-void timelinePanel::drawTrackData(int _track){
+void timelinePanel::drawPageData(){
     
     float ml = 60;
     float mt = 200;
@@ -266,24 +266,59 @@ void timelinePanel::drawTrackData(int _track){
     float h_unit = 105;
     float v_unit = 15;
     
-    int num_tracks_on_page = data.TL.tracks[_track].tlPages[data.getPage(_track)].tlChannels.size();
+    int num_tracks_on_page = data.TL.tracks[data.getTrack()].tlPages[data.getPage()].tlChannels.size();
+    string selectedPageChannel = "";
     
-    string tlt = "TRACK " + ofToString(_track+1) + " > PAGE " + ofToString(data.getPage(_track+1)) + "[" + ofToString(num_tracks_on_page) + "] - " ;
+    if (data.getNumOfChannelsOnPage() > 0){
+        
+    } else {
+        
+    }
+    
+    string tlt = "TRACK " + ofToString(data.getTrack()+1) + " > PAGE " + ofToString(data.getPage()+1) + "[" + ofToString(data.getNumOfChannelsOnPage()) + "] - " ;
     
     tlt += "(";
     
     for(int i=0;i<num_tracks_on_page;i++){
         
-        tlt += "[" + ofToString(data.TL.tracks[_track].tlPages[data.getPage(_track)].tlChannels[i].name) + ",";
-        tlt += ofToString(data.TL.tracks[_track].tlPages[data.getPage(_track)].tlChannels[i].type) + "]";
+        tlt += "[" + ofToString(data.TL.tracks[data.getTrack()].tlPages[data.getPage()].tlChannels[i].name) + ",";
+        tlt += ofToString(data.TL.tracks[data.getTrack()].tlPages[data.getPage()].tlChannels[i].type) + "]";
         if(i<num_tracks_on_page-1){
             tlt += ", ";
         }
     }
     
     tlt += ")";
-    
     verdana9.drawString(tlt, _x+ml, _y+mt);
+    
+    string keyframeTxt = "KEYS: ";
+    string selKeyTxt = "SELECTED KEY: ";
+    
+    int kf;
+    float kv;
+    
+    
+    
+    if (data.getNumOfChannelsOnPage() > 0){
+        
+        int keysInChannel = data.TL.tracks[data.getTrack()].tlPages[data.getPage()].tlChannels[data.getSelectedChannel()].keyframes.keys.size();
+        int selectedKeyIndex = data.TL.tracks[data.getTrack()].tlPages[data.getPage()].tlChannels[data.getSelectedChannel()].keyframes.selected_key;
+        
+        for(int j=0; j< keysInChannel;j++){
+            
+            keyframeTxt += "(" + ofToString(data.getSelectedKey(j).x) + ":" + ofToString(data.getSelectedKey(j).y) + ")";
+            
+            if(j<keysInChannel-1){
+                keyframeTxt += ", ";
+            }
+        }
+
+        selKeyTxt += "(" + ofToString(data.getSelectedKey(selectedKeyIndex).x) + ":" + ofToString(data.getSelectedKey(selectedKeyIndex).y) + ")";
+        
+        
+    }
+    verdana9.drawString(keyframeTxt, _x+ml, _y+mt+v_unit*1);
+    verdana9.drawString(selKeyTxt, _x+ml, _y+mt+v_unit*2);
     
 }
 

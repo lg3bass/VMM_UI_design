@@ -91,7 +91,7 @@ void headerUI::setupGUI() {
     selPrev->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     selPrev->setBorderVisible(TRUE);
     selPrev->setBorder(ofColor::darkGrey, 1);
-    
+    selPrev->onButtonEvent(this, &headerUI::onButtonEvent);
     
     selNext = new ofxDatGuiButton(">");
     selNext->setTheme(new ofxDatGuiThemeVMM);
@@ -101,6 +101,7 @@ void headerUI::setupGUI() {
     selNext->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     selNext->setBorderVisible(TRUE);
     selNext->setBorder(ofColor::darkGrey, 1);
+    selNext->onButtonEvent(this, &headerUI::onButtonEvent);
     
     keyVal = new ofxDatGuiTextInput("", "45.0");
     keyVal->setTheme(new ofxDatGuiThemeVMM);

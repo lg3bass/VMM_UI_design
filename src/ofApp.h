@@ -16,32 +16,14 @@ struct appData {
     ofColor txt_color;
 };
 
-struct controllerData {
-    int selected_track;
-    int selected_clip;
-    int selected_page;
-    
-    int measures;
-    int bpm;
-    int fps;
-    int loop;
-    int mBeats;
-    int mUnits;
-    int bar;
-    int beat;
-    int frame;
-    
-    bool snap;
-    bool drive;
-    bool osc;
-};
+
 
 class ofApp : public ofBaseApp{
 
 	public:
         appData myAppData;
-        controllerData myCtrlData;
-    
+
+        //ofApp.cpp
 		void setup();
 		void update();
 		void draw();
@@ -59,14 +41,13 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
     
+        //ofAppRouter.cpp
         void setControllerData(string name, int data);
         void setBreadcrumb();
-    
         void addTLTrack(string name, int type);
         void remTLTrack();
     
-    
-        void resetControllerData();
+
     
     private:
     

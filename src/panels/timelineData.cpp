@@ -27,13 +27,7 @@ timelineData::timelineData(){
             
         }
         
-        //add test keys
-        for(int k=0;k<3;k++){
-            key kf;
-            kf.frm = k*15;
-            kf.val = 0;
-            TL.keyframes.keys.push_back(kf);
-        }
+
         
         
         TL.tracks.push_back(mytrack);
@@ -98,6 +92,18 @@ void timelineData::addtlTrack(string _name, int _type){
     channel newTrack;
     newTrack.name = _name;
     newTrack.type = channelType(_type);
+    newTrack.selected_key = 0;
+    
+    for(int k=0;k<3;k++){
+        
+        key ky;
+        ky.frm = 15*k;
+        ky.val = 100*k;
+    
+        newTrack.keyframes.keys.push_back(ky);
+        
+        
+    }
     
     TL.tracks[getTrack()].tlPages[getPage()].tlChannels.push_back(newTrack);
     
@@ -143,4 +149,15 @@ int timelineData::getNumOfChannelsOnPage(){
         
     return num_tracks_on_page;
     
+}
+
+//-------------------------------------------------
+ofVec2f timelineData::getSelectedKey(int _selKey){
+    
+    int kf = TL.tracks[getTrack()].tlPages[getPage()].tlChannels[getSelectedChannel()].keyframes.keys[_selKey].frm;
+    float kv = TL.tracks[getTrack()].tlPages[getPage()].tlChannels[getSelectedChannel()].keyframes.keys[_selKey].val;
+    
+    ofVec2f key = ofVec2f(kf,kv);
+    
+    return key;
 }

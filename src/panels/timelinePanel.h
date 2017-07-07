@@ -32,8 +32,8 @@ public:
     void mousePressed(int x, int y, int button);
     void mouseReleased(int x, int y, int button);
     
-    void drawData();
-    void drawTrackData(int _track);
+    void drawTrackData();
+    void drawPageData();
     
     timelineData data;
     
