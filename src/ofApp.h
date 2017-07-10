@@ -42,8 +42,9 @@ class ofApp : public ofBaseApp{
     
     
         //ofAppRouter.cpp
+        //timePanel functions
+    
         void setControllerData(string name, int data);
-        void setBreadcrumb();
         void addTLTrack(string name, int type);
         void remTLTrack();
         
@@ -51,7 +52,10 @@ class ofApp : public ofBaseApp{
         void prevKey();
         void setKeyVal(int _val);
     
-
+        //headerPanel functions
+        void setBreadcrumb();
+        void displayKeyValue(int _val);
+    
     
     private:
     
