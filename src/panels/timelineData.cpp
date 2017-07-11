@@ -22,13 +22,9 @@ timelineData::timelineData(){
             myPage.name = "PAGE_"+ofToString(p);
             myPage.selected_channel = 0;
             
-            mytrack.tlPages.push_back(myPage);
-            
+            mytrack.tlPages.push_back(myPage);            
             
         }
-        
-
-        
         
         TL.tracks.push_back(mytrack);
         
@@ -92,7 +88,7 @@ void timelineData::addtlTrack(string _name, int _type){
     channel newTrack;
     newTrack.name = _name;
     newTrack.type = channelType(_type);
-    newTrack.selected_key = 0;
+    newTrack.selected_key = -1;
     
     for(int k=0;k<3;k++){
         
@@ -101,7 +97,6 @@ void timelineData::addtlTrack(string _name, int _type){
         ky.val = 100*k;
     
         newTrack.keyframes.keys.push_back(ky);
-        
         
     }
     
@@ -128,6 +123,8 @@ int timelineData::getSelectedChannel(){
 //-------------------------------------------------
 void timelineData::setSelectedChannel(int _page){
     TL.tracks[getTrack()].tlPages[getPage()].selected_channel = _page;
+    
+    setSelectedKeyIndex(-1);
     
     
     ofLog() << "Selected - Page " << ofToString(getPage()) << " Timeline " << getSelectedChannelName(_page);

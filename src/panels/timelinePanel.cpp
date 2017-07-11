@@ -60,14 +60,14 @@ void timelinePanel::keyPressed(int key){
                     if(data.getNumOfChannelsOnPage() > 1){
                         
                         
-                        int selected_page = data.getSelectedChannel();
+                        int selected_page = data.getSelectedChannel();                  //calculates the selected_page if using keyboard
                         
                         if(selected_page > 0){
                             selected_page--;
                         } else {
                             selected_page = data.getNumOfChannelsOnPage()-1;
                         }
-                        data.setSelectedChannel(selected_page);
+                        bMainApp->selectChannel(selected_page);                         //set the selected channel and gui
                         
                         cout << "F1 pressed - decrement track selection" << endl;
                         
@@ -82,15 +82,15 @@ void timelinePanel::keyPressed(int key){
                     //increment
                     if(data.getNumOfChannelsOnPage() > 1){
                         
-                        
-                        int selected_page = data.getSelectedChannel();
+                        int selected_page = data.getSelectedChannel();                  //calculates the selected_page if using keyboard
                         
                         if(selected_page < data.getNumOfChannelsOnPage()-1){
                             selected_page++;
                         } else {
                             selected_page = 0;
                         }
-                        data.setSelectedChannel(selected_page);
+                        
+                        bMainApp->selectChannel(selected_page);                         //set the selected channel and gui
                         
                         cout << "F2 pressed - increment track selection" << endl;
                     } else {
@@ -219,61 +219,55 @@ void timelinePanel::mouseReleased(int x, int y, int button){
 void timelinePanel::drawTrackData(){
 
     float ml = 60;
-    float mt = 80;
+    float mt = 10;
 
-    float h_unit = 105;
+    float h_unit = 80;
     float v_unit = 15;
+
+    
+    verdana9.drawString("MM: "+ofToString(data.TL.measures), h_unit*0+ml, _y+mt+v_unit*0);
+    verdana9.drawString("BPM: "+ofToString(data.TL.bpm), h_unit*1+ml, _y+mt+v_unit*0);
+    verdana9.drawString("FPS: "+ofToString(data.TL.fps), h_unit*2+ml, _y+mt+v_unit*0);
+    verdana9.drawString("LOOP: "+ofToString(data.TL.loop), h_unit*3+ml, _y+mt+v_unit*0);
+    verdana9.drawString("sigBeat: "+ofToString(data.TL.mBeats), h_unit*4+ml, _y+mt+v_unit*0);
+    verdana9.drawString("sigUnit: "+ofToString(data.TL.mUnits), h_unit*5+ml, _y+mt+v_unit*0);
+    verdana9.drawString("BAR: "+ofToString(data.TL.bar), h_unit*6+ml, _y+mt+v_unit*0);
+    verdana9.drawString("BEAT: "+ofToString(data.TL.beat), h_unit*7+ml, _y+mt+v_unit*0);
+    verdana9.drawString("FRAME: "+ofToString(data.TL.frame), h_unit*8+ml, _y+mt+v_unit*0);
     
 
-    verdana9.drawString("TRACK:"     , 0, _y+mt+v_unit*0);
-    verdana9.drawString("page:"      , 0, _y+mt+v_unit*1);
-    verdana9.drawString("clip:"      , 0, _y+mt+v_unit*2);
-    verdana9.drawString("cue:"       , 0, _y+mt+v_unit*3);
-    verdana9.drawString("keys:", 0, _y+mt+v_unit*4);
-
+    verdana9.drawString("TRACK:", 0, _y+mt+v_unit*3);
+    verdana9.drawString("PAGE:", 0, _y+mt+v_unit*4);
+    verdana9.drawString("CLIP:", 0, _y+mt+v_unit*5);
+    verdana9.drawString("CUED:", 0, _y+mt+v_unit*6);
+    verdana9.drawString("CHANNEL", 0, _y+mt+v_unit*7);
+   
 
     for(int i=0; i<NUMBER_OF_TRACKS;i++){
 
-        verdana9.drawString(ofToString(i+1), i*100+ml, _y+mt+v_unit*0);
-        verdana9.drawString(ofToString(data.getPage(i)+1), i*100+ml, _y+mt+v_unit*1);
-        verdana9.drawString(ofToString(data.getClip(i)+1), i*100+ml, _y+mt+v_unit*2);
-        verdana9.drawString(data.getCuedToPlay(i) ? "true" : "false", i*100+ml, _y+mt+v_unit*3);
-        
-
-        
-        
-//        string ky;
-//        for(int k=0; k<3;k++){
-//            
-//            
-//            ky += "["+ofToString(data.TL.keyframes.keys[k].frm)+","+ofToString(data.TL.keyframes.keys[k].val)+"],";
-//            
-//        }
-//        verdana9.drawString(ky, i*100+ml, _y+mt+v_unit*4);
+        verdana9.drawString(ofToString(i+1), i*h_unit+ml, _y+mt+v_unit*3);
+        verdana9.drawString(ofToString(data.getPage(i)+1), i*h_unit+ml, _y+mt+v_unit*4);
+        verdana9.drawString(ofToString(data.getClip(i)+1), i*h_unit+ml, _y+mt+v_unit*5);
+        verdana9.drawString(data.getCuedToPlay(i) ? "true" : "false", i*h_unit+ml, _y+mt+v_unit*6);
         
     }
 
-    drawPageData();
+
+    drawPageData(_y+mt+v_unit*3);
     
 }
 
 //-------------------------------------------------
-void timelinePanel::drawPageData(){
+void timelinePanel::drawPageData(int _mt){
     
     float ml = 60;
-    float mt = 200;
+    float mt = _mt;
     
     float h_unit = 105;
     float v_unit = 15;
     
     int num_tracks_on_page = data.TL.tracks[data.getTrack()].tlPages[data.getPage()].tlChannels.size();
     string selectedPageChannel = "";
-    
-    if (data.getNumOfChannelsOnPage() > 0){
-        
-    } else {
-        
-    }
     
     string tlt = "TRACK " + ofToString(data.getTrack()+1) + " > PAGE " + ofToString(data.getPage()+1) + "[" + ofToString(data.getNumOfChannelsOnPage()) + "] - " ;
     
@@ -301,9 +295,6 @@ void timelinePanel::drawPageData(){
     
     if (data.getNumOfChannelsOnPage() > 0){
         
-        //int keysInChannel = data.TL.tracks[data.getTrack()].tlPages[data.getPage()].tlChannels[data.getSelectedChannel()].keyframes.keys.size();
-        //int selectedKeyIndex = data.TL.tracks[data.getTrack()].tlPages[data.getPage()].tlChannels[data.getSelectedChannel()].selected_key;
-        
         int keysInChannel = data.getNumOfKeysInChannel();
         int selectedKeyIndex = data.getSelectedKeyIndex();
         
@@ -318,6 +309,10 @@ void timelinePanel::drawPageData(){
 
         selKeyTxt += ofToString(data.getSelectedKeyIndex()) + " - (" + ofToString(data.getSelectedKeyValue(selectedKeyIndex).x) + ":" + ofToString(data.getSelectedKeyValue(selectedKeyIndex).y) + ")";
         
+        
+    } else {
+        keyframeTxt += " NONE";
+        selKeyTxt += " NONE";
         
     }
     verdana9.drawString(keyframeTxt, _x+ml, _y+mt+v_unit*1);

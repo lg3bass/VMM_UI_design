@@ -33,7 +33,7 @@ public:
     void mouseReleased(int x, int y, int button);
     
     void drawTrackData();
-    void drawPageData();
+    void drawPageData(int _mt);
     
     timelineData data;
     

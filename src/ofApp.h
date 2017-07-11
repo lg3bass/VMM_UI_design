@@ -55,6 +55,7 @@ class ofApp : public ofBaseApp{
         //headerPanel functions
         void setBreadcrumb();
         void displayKeyValue(int _val);
+        void selectChannel(int _index);
     
     
     private:

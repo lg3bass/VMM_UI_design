@@ -103,7 +103,7 @@ void headerUI::setupGUI() {
     selNext->setBorder(ofColor::darkGrey, 1);
     selNext->onButtonEvent(this, &headerUI::onButtonEvent);
     
-    keyVal = new ofxDatGuiTextInput("KEY", "45.0");
+    keyVal = new ofxDatGuiTextInput("KEY", "---");
     keyVal->setTheme(new ofxDatGuiThemeVMM);
     keyVal->setWidth(50,0.0);
     keyVal->setHeight(rowH);

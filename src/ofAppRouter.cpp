@@ -81,17 +81,30 @@ void ofApp::setBreadcrumb(){
 //--------------------------------------------------------------
 void ofApp::displayKeyValue(int _val){
     
-    if(timePanel.data.getNumOfChannelsOnPage()>0){
-        ofVec2f key = timePanel.data.getSelectedKeyValue(timePanel.data.getSelectedKeyIndex());
+    if(_val == -1){
         
-        headerPanel.mainUI.keyVal->setText(ofToString(key.y));
+        headerPanel.mainUI.keyVal->setText("---");
         
     } else {
         
-        headerPanel.mainUI.keyVal->setText("NULL");
+        if(timePanel.data.getNumOfChannelsOnPage()>0){
+            ofVec2f key = timePanel.data.getSelectedKeyValue(timePanel.data.getSelectedKeyIndex());
+            
+            headerPanel.mainUI.keyVal->setText(ofToString(key.y));
+            
+        } else {
+            
+            headerPanel.mainUI.keyVal->setText("NULL");
+        }
     }
+    
+}
 
+//--------------------------------------------------------------
+void ofApp::selectChannel(int _index){
     
-    
+    timePanel.data.setSelectedChannel(_index);
+    timePanel.data.setSelectedKeyIndex(-1);
+    displayKeyValue(-1);
     
 }
