@@ -7,6 +7,7 @@
 //
 
 #include "timelineData.h"
+#include <regex>
 
 //-------------------------------------------------
 timelineData::timelineData(){
@@ -30,6 +31,75 @@ timelineData::timelineData(){
         
     }
 }
+
+//-------------------------------------------------
+void timelineData::setMeasures(string _measures){
+    TL.measures = ofToInt(_measures);
+    
+}
+
+//-------------------------------------------------
+void timelineData::setBPM(string _bpm){
+    TL.bpm = ofToInt(_bpm);
+    
+}
+
+//-------------------------------------------------
+void timelineData::setFPS(string _fps){
+    TL.fps = ofToInt(_fps);
+    
+}
+
+//-------------------------------------------------
+void timelineData::setLoop(string _loop){
+    TL.loop = ofToInt(_loop);
+    
+}
+
+//-------------------------------------------------
+void timelineData::setMeter(string _meter){
+    
+    std::regex re("\\s*(\\d+)\\s*/\\s*(\\d+)\\s*\\");
+    std::smatch m;
+    bool found = std::regex_search(_meter,m,re);
+    
+    cout << std::regex_search(_meter,m,re) << " - numerator:" << m[1] << " - denominator:" << m[2] << endl;
+
+    if(found){
+        
+        TL.mBeats = ofToInt(m[1]);
+        TL.mUnits = ofToInt(m[2]);
+    }
+    
+}
+
+//-------------------------------------------------
+void timelineData::setBarsBeatsFrames(string _value){
+    
+    std::regex re("\\s*(\\d+)\\s*\\|\\s*(\\d+)\\s*\\|*\\s*(\\d*)\\s*");
+    std::smatch m;
+    
+    bool found = std::regex_search(_value,m,re);
+    
+    cout << std::regex_search(_value,m,re) << " - bar:" << m[1] << " - beat:" << m[2] << " - frame:" << m[3] << endl;
+    
+    if(found){
+        
+        TL.bar = ofToInt(m[1]);
+        TL.beat = ofToInt(m[2]);
+        
+        //TODO - calculate frame if none in given.
+        TL.frame = ofToInt(m[3]);
+        
+        
+    } else {
+        
+        cout << "Please format the field <bar>|<beat>|<frame>" << endl;
+    }
+    
+    
+}
+
 
 //-------------------------------------------------
 int timelineData::getTrack(){

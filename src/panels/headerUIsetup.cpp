@@ -165,6 +165,8 @@ void headerUI::setupGUI() {
     measures->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     measures->setBorderVisible(TRUE);
     measures->setBorder(ofColor::darkGrey, 1);
+    measures->onTextInputEvent(this, &headerUI::onTextInputEvent);
+    
     
     bpm = new ofxDatGuiTextInput("BPM", "120");
     bpm->setTheme(new ofxDatGuiThemeVMM);
@@ -175,6 +177,7 @@ void headerUI::setupGUI() {
     bpm->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     bpm->setBorderVisible(TRUE);
     bpm->setBorder(ofColor::darkGrey, 1);
+    bpm->onTextInputEvent(this, &headerUI::onTextInputEvent);
     
     fps = new ofxDatGuiTextInput("FPS", "30");
     fps->setTheme(new ofxDatGuiThemeVMM);
@@ -185,6 +188,7 @@ void headerUI::setupGUI() {
     fps->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     fps->setBorderVisible(TRUE);
     fps->setBorder(ofColor::darkGrey, 1);
+    fps->onTextInputEvent(this, &headerUI::onTextInputEvent);
     
     loop = new ofxDatGuiTextInput("LOOP", "30");
     loop->setTheme(new ofxDatGuiThemeVMM);
@@ -195,6 +199,7 @@ void headerUI::setupGUI() {
     loop->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     loop->setBorderVisible(TRUE);
     loop->setBorder(ofColor::darkGrey, 1);
+    loop->onTextInputEvent(this, &headerUI::onTextInputEvent);
     
     
     //ROW2
@@ -299,6 +304,7 @@ void headerUI::setupGUI() {
     meter->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     meter->setBorderVisible(TRUE);
     meter->setBorder(ofColor::darkGrey, 1);
+    meter->onTextInputEvent(this, &headerUI::onTextInputEvent);
     
     barBeatFrame= new ofxDatGuiTextInput("BAR|BEAT|FRAME", "8|3|345");
     barBeatFrame->setTheme(new ofxDatGuiThemeVMM);
@@ -309,6 +315,7 @@ void headerUI::setupGUI() {
     barBeatFrame->setLabelAlignment(ofxDatGuiAlignment::CENTER);
     barBeatFrame->setBorderVisible(TRUE);
     barBeatFrame->setBorder(ofColor::darkGrey, 1);
+    barBeatFrame->onTextInputEvent(this, &headerUI::onTextInputEvent);
     
     //ROW2
     quantize = new ofxDatGuiButton("QUANTIZE");

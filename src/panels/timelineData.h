@@ -72,6 +72,16 @@ public:
     //constuctor
     timelineData();
     
+    // GLOBAL DATA
+    void setMeasures(string _measures);
+    void setBPM(string _bpm);
+    void setFPS(string _fps);
+    void setLoop(string _loop);
+    void setMeter(string _meter);
+    void setBarsBeatsFrames(string _value);
+    
+    
+    // TRACK SPECIFIC DATA
     int getTrack();                                 //return the current selected track
     void setTrack(int _track);                      //set current track
     

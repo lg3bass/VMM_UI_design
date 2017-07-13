@@ -236,6 +236,8 @@ void timelinePanel::drawTrackData(){
     verdana9.drawString("FRAME: "+ofToString(data.TL.frame), h_unit*8+ml, _y+mt+v_unit*0);
     
 
+    
+
     verdana9.drawString("TRACK:", 0, _y+mt+v_unit*3);
     verdana9.drawString("PAGE:", 0, _y+mt+v_unit*4);
     verdana9.drawString("CLIP:", 0, _y+mt+v_unit*5);

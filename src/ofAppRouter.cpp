@@ -100,11 +100,44 @@ void ofApp::displayKeyValue(int _val){
     
 }
 
+
 //--------------------------------------------------------------
 void ofApp::selectChannel(int _index){
     
     timePanel.data.setSelectedChannel(_index);
     timePanel.data.setSelectedKeyIndex(-1);
     displayKeyValue(-1);
+    
+}
+
+//--------------------------------------------------------------
+void ofApp::passTextValue(string _field, string _val){
+    
+    cout << "passTextValue: " << ofToString(_val) << endl;
+    
+    if(_field == "MEASURES"){
+        timePanel.data.setMeasures(_val);
+    
+        
+    } else if (_field == "BPM") {
+        timePanel.data.setBPM(_val);
+    
+        
+    } else if (_field == "FPS"){
+        timePanel.data.setFPS(_val);
+        
+        
+    } else if (_field == "LOOP") {
+        timePanel.data.setLoop(_val);
+        
+        
+    } else if (_field == "METER"){
+        timePanel.data.setMeter(_val);
+        
+        
+    } else if (_field == "BAR|BEAT|FRAME"){
+        timePanel.data.setBarsBeatsFrames(_val);
+        
+    }
     
 }

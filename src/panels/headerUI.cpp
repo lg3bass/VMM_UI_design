@@ -67,7 +67,7 @@ void headerUI::onDDInputEvent(ofxDatGuiDropdownEvent e){
 //--------------------------------------------------------------
 void headerUI::onTextInputEvent(ofxDatGuiTextInputEvent e){
     
-    cout << e.target->getName() << " text: " << e.text << endl;
+    //cout << e.target->getName() << " text: " << e.text << endl;
     
     if(e.target->getName()== "NAME"){
 
@@ -78,10 +78,11 @@ void headerUI::onTextInputEvent(ofxDatGuiTextInputEvent e){
         //cout << "set the value of the key!" << endl;
         uiMainApp->setKeyVal(ofToInt(e.text));
         
-                            
-                            
+    } else if (e.target->getName() == "MEASURES" || e.target->getName() == "BPM" || e.target->getName() == "FPS" || e.target->getName() == "BPM" || e.target->getName() == "LOOP" || e.target->getName() == "METER" || e.target->getName() == "BAR|BEAT|FRAME"){
         
-    }
+        uiMainApp->passTextValue(e.target->getName(),e.text);       //pass up to ofApp
+        
+    } 
     
     
     

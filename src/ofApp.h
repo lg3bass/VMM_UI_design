@@ -57,6 +57,8 @@ class ofApp : public ofBaseApp{
         void displayKeyValue(int _val);
         void selectChannel(int _index);
     
+        void passTextValue(string _name, string _val);
+    
     
     private:
     
